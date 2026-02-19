@@ -1,1807 +1,1540 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Brothers Karamazov - Book Club Companion</title>
-    <style>
-:root{
-  --bg:#f6f2ea;
-  --surface:#ffffff;
-  --ink:#1f2937;
-  --muted:#6b7280;
-  --border:rgba(31,41,55,0.12);
-  --shadow:0 10px 25px rgba(31,41,55,0.10);
-  --accent:#b08d57; /* muted gold */
-  --accent2:#8b6a3b;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Brothers Karamazov — Book Club Companion</title>
 
-*{margin:0;padding:0;box-sizing:border-box;}
+  <style>
+    :root{
+      --bg:#f6f2ea;
+      --surface:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --border:rgba(31,41,55,0.12);
+      --shadow:0 10px 25px rgba(31,41,55,0.10);
+      --accent:#b08d57; /* muted gold */
+      --accent2:#8b6a3b;
+    }
 
-body{
-  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.75;
-  min-height: 100vh;
-}
+    *{margin:0;padding:0;box-sizing:border-box;}
 
-.container{max-width: 1100px; margin: 0 auto; padding: 18px;}
+    body{
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.75;
+      min-height: 100vh;
+    }
 
-header{
-  text-align:center;
-  padding: 26px 18px 18px;
-  background: var(--surface);
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  margin-bottom: 14px;
-}
+    .container{max-width:1100px;margin:0 auto;padding:18px;}
 
-h1{
-  font-size: 2.15em;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 6px;
-}
+    header{
+      text-align:center;
+      padding: 26px 18px 18px;
+      background: var(--surface);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
 
-.subtitle{
-  font-size: 1.02em;
-  color: var(--muted);
-  font-style: italic;
-}
+    h1{
+      font-size: 2.15em;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
 
-.nav-tabs,.book-selector,.chapter-nav{
-  display:flex;
-  gap:10px;
-  flex-wrap: nowrap;
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width: thin;
-  padding-bottom: 6px;
-}
+    .subtitle{
+      font-size: 1.02em;
+      color: var(--muted);
+      font-style: italic;
+    }
 
-.tab-btn,.book-btn,.chapter-btn{flex:0 0 auto; white-space:nowrap;}
+    .sticky-nav{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(246,242,234,0.92);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 18px rgba(31,41,55,0.08);
+      padding: 10px 10px;
+      margin-bottom: 16px;
+    }
 
-.sticky-nav{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(246,242,234,0.92);
-  backdrop-filter: blur(10px);
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  box-shadow: 0 8px 18px rgba(31,41,55,0.08);
-  padding: 10px 10px;
-  margin-bottom: 16px;
-}
+    .nav-tabs,.book-selector,.chapter-nav{
+      display:flex;
+      gap:10px;
+      flex-wrap: nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width: thin;
+      padding-bottom: 6px;
+    }
+    .tab-btn,.book-btn,.chapter-btn{flex:0 0 auto; white-space:nowrap;}
 
-.tab-btn{
-  padding: 10px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.9);
-  color: var(--ink);
-  cursor: pointer;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
-  font-family: inherit;
-  font-size: 0.98em;
-}
-.tab-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(31,41,55,0.08); }
-.tab-btn.active{
-  border-color: rgba(176,141,87,0.55);
-  box-shadow: 0 10px 20px rgba(176,141,87,0.18);
-}
+    .tab-btn{
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      color: var(--ink);
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      font-family: inherit;
+      font-size: 0.98em;
+    }
+    .tab-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(31,41,55,0.08); }
+    .tab-btn.active{
+      border-color: rgba(176,141,87,0.55);
+      box-shadow: 0 10px 20px rgba(176,141,87,0.18);
+    }
 
-.content-section{
-  display:none;
-  background: var(--surface);
-  padding: 26px;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  scroll-margin-top: 130px;
-}
-.content-section.active{ display:block; animation: fadeIn .22s ease; }
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+    .content-section{
+      display:none;
+      background: var(--surface);
+      padding: 26px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      scroll-margin-top: 130px;
+    }
+    .content-section.active{ display:block; animation: fadeIn .22s ease; }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);} }
 
-.chapter-title{
-  font-size: 1.7em;
-  color: var(--ink);
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(31,41,55,0.12);
-  line-height: 1.2;
-}
+    .chapter-title{
+      font-size: 1.7em;
+      color: var(--ink);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(31,41,55,0.12);
+      line-height: 1.2;
+    }
 
-.section{
-  margin: 18px 0;
-  padding: 18px;
-  background: rgba(31,41,55,0.03);
-  border-radius: 14px;
-  border: 1px solid rgba(31,41,55,0.08);
-}
+    .section{
+      margin: 18px 0;
+      padding: 18px;
+      background: rgba(31,41,55,0.03);
+      border-radius: 14px;
+      border: 1px solid rgba(31,41,55,0.08);
+    }
 
-.section-title{
-  font-size: 1.15em;
-  color: var(--ink);
-  margin-bottom: 12px;
-}
+    .section-title{
+      font-size: 1.15em;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
 
-.key-idea{
-  background: rgba(176,141,87,0.08);
-  padding: 14px;
-  margin: 10px 0;
-  border-radius: 12px;
-  border: 1px solid rgba(176,141,87,0.18);
-}
+    .key-idea{
+      background: rgba(176,141,87,0.08);
+      padding: 14px;
+      margin: 10px 0;
+      border-radius: 12px;
+      border: 1px solid rgba(176,141,87,0.18);
+    }
 
-.question{
-  margin: 12px 0;
-  padding: 14px;
-  background: rgba(31,41,55,0.03);
-  border-radius: 12px;
-  border: 1px solid rgba(31,41,55,0.08);
-}
-.question-text{ font-size: 1.03em; color: var(--ink); margin-bottom: 6px; }
-.question-context{ font-size: 0.95em; color: var(--muted); font-style: italic; }
+    .question{
+      margin: 12px 0;
+      padding: 14px;
+      background: rgba(31,41,55,0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(31,41,55,0.08);
+    }
+    .question-text{ font-size: 1.03em; color: var(--ink); margin-bottom: 6px; }
+    .question-context{ font-size: 0.95em; color: var(--muted); font-style: italic; }
 
-.takeaway{
-  background: rgba(176,141,87,0.10);
-  padding: 16px;
-  border-radius: 14px;
-  margin: 16px 0;
-  border: 1px solid rgba(176,141,87,0.22);
-  font-style: italic;
-}
+    .takeaway{
+      background: rgba(176,141,87,0.10);
+      padding: 16px;
+      border-radius: 14px;
+      margin: 16px 0;
+      border: 1px solid rgba(176,141,87,0.22);
+      font-style: italic;
+    }
 
-.character-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
-  margin-top: 14px;
-}
-.character-card{
-  background: var(--surface);
-  padding: 16px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  box-shadow: 0 8px 18px rgba(31,41,55,0.06);
-}
-.character-name{ font-size: 1.25em; margin-bottom: 6px; }
-.character-subtitle{ color: var(--muted); font-style: italic; margin-bottom: 10px; }
-.character-traits{ list-style:none; padding-left:0; }
-.character-traits li{ padding: 6px 0 6px 20px; position:relative; }
-.character-traits li:before{ content:"•"; position:absolute; left:0; color: var(--accent); }
+    .character-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .character-card{
+      background: var(--surface);
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 18px rgba(31,41,55,0.06);
+    }
+    .character-name{ font-size: 1.25em; margin-bottom: 6px; }
+    .character-subtitle{ color: var(--muted); font-style: italic; margin-bottom: 10px; }
+    .character-traits{ list-style:none; padding-left:0; }
+    .character-traits li{ padding: 6px 0 6px 20px; position:relative; }
+    .character-traits li:before{ content:"•"; position:absolute; left:0; color: var(--accent); }
 
-.book-btn{
-  padding: 9px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.9);
-  cursor: pointer;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
-  color: var(--ink);
-  font-family: inherit;
-}
-.book-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(31,41,55,0.08); }
-.book-btn.active{ border-color: rgba(176,141,87,0.55); box-shadow: 0 10px 20px rgba(176,141,87,0.18); }
+    .book-btn{
+      padding: 9px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      color: var(--ink);
+      font-family: inherit;
+    }
+    .book-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(31,41,55,0.08); }
+    .book-btn.active{ border-color: rgba(176,141,87,0.55); box-shadow: 0 10px 20px rgba(176,141,87,0.18); }
 
-.chapter-btn{
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.9);
-  cursor: pointer;
-  transition: transform .15s, box-shadow .15s, border-color .15s;
-  color: var(--ink);
-  font-family: inherit;
-}
-.chapter-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(31,41,55,0.08); }
-.chapter-btn.active{ border-color: rgba(176,141,87,0.55); box-shadow: 0 10px 20px rgba(176,141,87,0.18); }
+    .chapter-btn{
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s, border-color .15s;
+      color: var(--ink);
+      font-family: inherit;
+    }
+    .chapter-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(31,41,55,0.08); }
+    .chapter-btn.active{ border-color: rgba(176,141,87,0.55); box-shadow: 0 10px 20px rgba(176,141,87,0.18); }
 
-.link-btn{
-  display:inline-block;
-  padding: 10px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(176,141,87,0.35);
-  background: rgba(176,141,87,0.12);
-  color: var(--ink);
-  text-decoration:none;
-}
-.link-btn:hover{ background: rgba(176,141,87,0.18); }
+    .link-btn{
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(176,141,87,0.35);
+      background: rgba(176,141,87,0.12);
+      color: var(--ink);
+      text-decoration:none;
+    }
+    .link-btn:hover{ background: rgba(176,141,87,0.18); }
 
-.disclaimer{
-  font-size: 0.92em;
-  font-style: italic;
-  color: var(--muted);
-  padding: 14px;
-  background: rgba(31,41,55,0.03);
-  border-radius: 12px;
-  border: 1px solid rgba(31,41,55,0.08);
-}
+    .disclaimer{
+      font-size: 0.92em;
+      font-style: italic;
+      color: var(--muted);
+      padding: 14px;
+      background: rgba(31,41,55,0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(31,41,55,0.08);
+    }
 
-.search-wrap{ margin: 12px 0 18px; }
-.search-input{
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.9);
-  color: var(--ink);
-  font-family: inherit;
-  font-size: 1em;
-}
-.search-hint{ margin-top: 10px; color: var(--muted); font-style: italic; }
+    .search-wrap{ margin: 12px 0 18px; }
+    .search-input{
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 1em;
+    }
+    .search-hint{ margin-top: 10px; color: var(--muted); font-style: italic; }
 
-/* Hide all books by default; Book I is shown inline or via JS */
-.book-content{ display:none; }
+    /* Hide all books by default; Book I shown inline initially */
+    .book-content{ display:none; }
 
-/* Focus */
-.tab-btn:focus-visible,.book-btn:focus-visible,.chapter-btn:focus-visible,.link-btn:focus-visible,.search-input:focus-visible{
-  outline: 3px solid rgba(176,141,87,0.45);
-  outline-offset: 2px;
-}
+    /* Focus */
+    .tab-btn:focus-visible,.book-btn:focus-visible,.chapter-btn:focus-visible,.link-btn:focus-visible,.search-input:focus-visible{
+      outline: 3px solid rgba(176,141,87,0.45);
+      outline-offset: 2px;
+    }
 
-@media (prefers-reduced-motion: reduce){
-  .content-section.active{ animation:none; }
-  *{ scroll-behavior:auto !important; }
-}
+    .footer{
+      margin: 26px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 0.92em;
+    }
 
-@media (max-width: 768px){
-  h1{ font-size: 1.6em; }
-  .content-section{ padding: 20px; }
-  .character-grid{ grid-template-columns: 1fr; }
-}
-</style>
+    @media (prefers-reduced-motion: reduce){
+      .content-section.active{ animation:none; }
+      *{ scroll-behavior:auto !important; }
+    }
+
+    @media (max-width: 768px){
+      h1{ font-size: 1.6em; }
+      .content-section{ padding: 20px; }
+      .character-grid{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>The Brothers Karamazov</h1>
-            <p class="subtitle">by Fyodor Dostoevsky</p>
-            <p class="subtitle">Your Book Club Companion</p>
-        <p style="max-width: 820px; margin: 14px auto 0; color: var(--muted);">
-                <strong style="color: var(--ink);">Ask Betsy — Structured Clarity.</strong>
-                This companion exists to help you cut through complexity in difficult works: identify the central tension,
-                clarify competing worldviews, and enter discussion with calm, grounded clarity. Use it solo or with a group.
-            </p>
-        </header>
-
-        <div class="sticky-nav">
-            <div class="nav-tabs">
-            <button class="tab-btn active" data-tab="guide" onclick="showTab(event, 'guide')">How to Use This Guide</button>
-            <button class="tab-btn" data-tab="characters" onclick="showTab(event, 'characters')">Characters</button>
-            <button class="tab-btn" data-tab="chapters" onclick="showTab(event, 'chapters')">Chapter-by-Chapter</button>
-            <button class="tab-btn" data-tab="book-questions" onclick="showTab(event, 'book-questions')">Book Discussion Questions</button>
-            <button class="tab-btn" data-tab="hallow" onclick="showTab(event, 'hallow')">Hallow Companion</button>
-        </div>
-        </div>
-
-        <!-- HOW TO USE THIS GUIDE TAB -->
-        <div id="guide" class="content-section active">
-            <h2 class="chapter-title">Welcome to Your Book Club Companion</h2>
-            
-            <div class="section">
-                <h5 class="section-title">How to Use This Guide</h5>
-                <p style="margin-bottom: 15px;">This guide is designed for facilitated or self-led book clubs. It balances Dostoevsky's philosophical depth with practical discussion prompts.</p>
-                
-                <div class="key-idea">
-                    <strong>Use Book-level questions as your primary discussion frame</strong><br>
-                    These are found in the "Book Discussion Questions" tab
-                </div>
-                
-                <div class="key-idea">
-                    <strong>Use Chapter-level questions selectively</strong><br>
-                    Pick 1–2 per meeting to anchor the conversation (found in "Chapter-by-Chapter")
-                </div>
-                
-                <div class="key-idea">
-                    <strong>You do not need to cover every question</strong><br>
-                    Choose what resonates with your group's interests and pace
-                </div>
-            </div>
-
-            <div class="section">
-                <h5 class="section-title">Why Book-Level Questions Work Best</h5>
-                <ul style="padding-left: 20px; margin-top: 10px;">
-                    <li style="margin-bottom: 10px;">Dostoevsky builds ideas in waves, not neatly per chapter</li>
-                    <li style="margin-bottom: 10px;">Chapters often set up tension that doesn't pay off until later</li>
-                    <li style="margin-bottom: 10px;">Book-level questions allow people who read differently (fast/slow) to participate meaningfully</li>
-                    <li style="margin-bottom: 10px;">Prevents the meeting from becoming a recap session</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h5 class="section-title">Navigation Guide</h5>
-                
-                <div class="key-idea">
-                    <strong>📚 Characters Tab</strong><br>
-                    Meet the Karamazov family before you begin. Understand who's who and what each brother represents.
-                </div>
-                
-                <div class="key-idea">
-                    <strong>📖 Chapter-by-Chapter Tab</strong><br>
-                    Navigate through all 12 Books with:<br>
-                    • Cliff notes summaries<br>
-                    • Core themes<br>
-                    • Gentle facilitator perspectives<br>
-                    • Detailed chapter breakdowns for Book I
-                </div>
-                
-                <div class="key-idea">
-                    <strong>💬 Book Discussion Questions Tab</strong><br>
-                    Complete discussion questions for all 12 Books with:<br>
-                    • End-of-book questions<br>
-                    • "Possible discussion" prompts to guide conversation<br>
-                    • Chapter anchors for deeper exploration<br>
-                    • Facilitation tips
-                </div>
-            </div>
-
-            <div class="section">
-                <h5 class="section-title">About "Gentle Facilitator Perspectives"</h5>
-                <p style="margin-bottom: 15px;">These notes are written in plain, welcoming language. They are <em>not</em> answers to read aloud, but soft ways to guide conversation if people feel stuck, intimidated, or unsure how to enter the discussion.</p>
-                <p style="font-style: italic; color: #c19a6b;">Each book ends with a closing reflection question to carry the conversation beyond the text and into personal experience.</p>
-            </div>
-
-            <div class="takeaway">
-                <strong>Ready to begin?</strong><br>
-                Start with the <strong>Characters</strong> tab to meet the family, then dive into your reading!
-            </div>
-        </div>
-
-        <!-- CHARACTERS TAB -->
-        <div id="characters" class="content-section">
-            <h2 class="chapter-title">The Main Characters</h2>
-            <div class="search-wrap">
-                <input id="characterSearch" class="search-input" type="search" placeholder="Search characters (e.g., Ivan, Alyosha, father, faith, reason…)" />
-                <div class="search-hint">Tip: try “faith”, “reason”, “father”.</div>
-            </div>
-            <p style="margin-bottom: 20px; font-size: 1.1em;">You need to know these people before diving into the chapters:</p>
-            
-            <div class="character-grid">
-                <div class="character-card">
-                    <h3 class="character-name">Fyodor Pavlovich Karamazov</h3>
-                    <p class="character-subtitle">The Father</p>
-                    <ul class="character-traits">
-                        <li>Crude, selfish, manipulative landowner</li>
-                        <li>Obsessed with money, pleasure, and power</li>
-                        <li>Emotionally absent as a parent, yet strangely magnetic</li>
-                        <li>Represents moral decay, irresponsibility, and ego</li>
-                    </ul>
-                    <p style="margin-top: 15px; color: #c19a6b; font-style: italic;">
-                        Dostoevsky makes him unpleasant on purpose. He is the problem the novel circles around.
-                    </p>
-                </div>
-
-                <div class="character-card">
-                    <h3 class="character-name">Dmitri (Mitya) Karamazov</h3>
-                    <p class="character-subtitle">The Eldest Son</p>
-                    <ul class="character-traits">
-                        <li>Passionate, impulsive, emotionally explosive</li>
-                        <li>Lives in extremes: love/hate, generosity/cruelty</li>
-                        <li>Constantly fighting with his father over money and a woman</li>
-                        <li>Represents the body, desire, honor, and raw emotion</li>
-                    </ul>
-                </div>
-
-                <div class="character-card">
-                    <h3 class="character-name">Ivan Karamazov</h3>
-                    <p class="character-subtitle">The Middle Son</p>
-                    <ul class="character-traits">
-                        <li>Brilliant, intellectual, detached</li>
-                        <li>Preoccupied with philosophy, morality, and the problem of evil</li>
-                        <li>Cool on the surface; deeply conflicted underneath</li>
-                        <li>Represents the mind, reason, skepticism, and moral doubt</li>
-                    </ul>
-                </div>
-
-                <div class="character-card">
-                    <h3 class="character-name">Alyosha (Alexei) Karamazov</h3>
-                    <p class="character-subtitle">The Youngest Son</p>
-                    <ul class="character-traits">
-                        <li>Gentle, compassionate, spiritually inclined</li>
-                        <li>A novice monk-in-training</li>
-                        <li>Serves as the moral and emotional center of the novel</li>
-                        <li>Represents the soul, faith, love, and humility</li>
-                    </ul>
-                    <p style="margin-top: 15px; color: #c19a6b; font-style: italic;">
-                        Alyosha is not naïve—he sees the darkness but chooses love anyway.
-                    </p>
-                </div>
-
-                <div class="character-card">
-                    <h3 class="character-name">Adelaida Ivanovna</h3>
-                    <p class="character-subtitle">The First Wife</p>
-                    <ul class="character-traits">
-                        <li>Dmitri's mother</li>
-                        <li>A passionate, impulsive woman who eloped with Fyodor</li>
-                        <li>Died young; her estate becomes a source of dispute</li>
-                    </ul>
-                </div>
-
-                <div class="character-card">
-                    <h3 class="character-name">Sofia Ivanovna</h3>
-                    <p class="character-subtitle">The Second Wife</p>
-                    <ul class="character-traits">
-                        <li>Ivan and Alyosha's mother</li>
-                        <li>Gentle, devout, mentally fragile</li>
-                        <li>Also dies young</li>
-                        <li>Alyosha inherits her spiritual nature</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- CHAPTERS TAB -->
-        <div id="chapters" class="content-section">
-            <h2 class="chapter-title">Navigate by Book & Chapter</h2>
-            
-            <div class="book-selector">
-                <button class="book-btn active" data-book="1" onclick="showBook(event, 1)">Book I</button>
-                <button class="book-btn" data-book="2" onclick="showBook(event, 2)">Book II</button>
-                <button class="book-btn" data-book="3" onclick="showBook(event, 3)">Book III</button>
-                <button class="book-btn" data-book="4" onclick="showBook(event, 4)">Book IV</button>
-                <button class="book-btn" data-book="5" onclick="showBook(event, 5)">Book V</button>
-                <button class="book-btn" data-book="6" onclick="showBook(event, 6)">Book VI</button>
-                <button class="book-btn" data-book="7" onclick="showBook(event, 7)">Book VII</button>
-                <button class="book-btn" data-book="8" onclick="showBook(event, 8)">Book VIII</button>
-                <button class="book-btn" data-book="9" onclick="showBook(event, 9)">Book IX</button>
-                <button class="book-btn" data-book="10" onclick="showBook(event, 10)">Book X</button>
-                <button class="book-btn" data-book="11" onclick="showBook(event, 11)">Book XI</button>
-                <button class="book-btn" data-book="12" onclick="showBook(event, 12)">Book XII</button>
-            </div>
-
-            <!-- BOOK I -->
-            <div id="book-1" class="book-content" style="display: block;">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book I: The History of a Family</h3>
-                
-                <div class="chapter-nav">
-                    <button class="chapter-btn active" data-chapter="1" onclick="showChapter(event, 1, 1)">Chapter 1</button>
-                    <button class="chapter-btn" data-chapter="2" onclick="showChapter(event, 1, 2)">Chapter 2</button>
-                    <button class="chapter-btn" data-chapter="3" onclick="showChapter(event, 1, 3)">Chapter 3</button>
-                    <button class="chapter-btn" data-chapter="4" onclick="showChapter(event, 1, 4)">Chapter 4</button>
-                    <button class="chapter-btn" data-chapter="5" onclick="showChapter(event, 1, 5)">Chapter 5</button>
-                </div>
-
-                <!-- Chapter 1 -->
-                <div id="chapter-1-1" class="chapter-content" style="display: block;">
-                    <h4 class="chapter-title">Chapter 1: "Fyodor Pavlovich Karamazov"</h4>
-                    
-                    <div class="section">
-                        <h5 class="section-title">What Happens (Plain English)</h5>
-                        <p>Dostoevsky introduces the Karamazov family, starting with the father. We learn:</p>
-                        <ul style="margin-top: 10px; padding-left: 20px;">
-                            <li>Fyodor Pavlovich is twice married, both marriages disastrous</li>
-                            <li>He abandons his children after each wife dies</li>
-                            <li>The sons grow up largely without him, raised by others</li>
-                            <li>He later reconnects with them—but selfishly and strategically</li>
-                        </ul>
-                        <p style="margin-top: 15px; font-style: italic;">This chapter is not plot-heavy. It's moral groundwork.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Why This Chapter Matters</h5>
-                        <p style="margin-bottom: 15px;">This is a character indictment, not just an introduction.</p>
-                        <p>Dostoevsky is doing three critical things:</p>
-                        <div class="key-idea">
-                            <strong>1. Showing how moral neglect creates generational damage</strong>
-                        </div>
-                        <div class="key-idea">
-                            <strong>2. Establishing the father as a spiritual vacuum</strong>
-                        </div>
-                        <div class="key-idea">
-                            <strong>3. Setting up the central tension:</strong><br>
-                            What do children owe a father who never acted like one?
-                        </div>
-                        <p style="margin-top: 15px;">Everything that happens later—conflict, guilt, rage, even crime—flows from this broken foundation.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Key Ideas for Discussion</h5>
-                        <div class="key-idea">
-                            <strong>Fatherhood as moral responsibility</strong><br>
-                            Fyodor Pavlovich doesn't just fail materially—he fails ethically.
-                        </div>
-                        <div class="key-idea">
-                            <strong>Absence as violence</strong><br>
-                            No overt abuse is described, but neglect becomes just as destructive.
-                        </div>
-                        <div class="key-idea">
-                            <strong>The sons as responses to the same wound</strong><br>
-                            • Dmitri responds with chaos<br>
-                            • Ivan responds with intellect<br>
-                            • Alyosha responds with faith<br>
-                            <em>Same origin. Radically different outcomes.</em>
-                        </div>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Quiet Signals (Dostoevsky Foreshadowing)</h5>
-                        <ul style="padding-left: 20px;">
-                            <li>The tone is almost mocking—that's intentional</li>
-                            <li>The father's irresponsibility is treated as comic, but the consequences will not be</li>
-                            <li>We're being warned: this man's moral emptiness will matter later</li>
-                        </ul>
-                    </div>
-
-                    <div class="takeaway">
-                        <strong>One Sentence Takeaway:</strong><br>
-                        This chapter argues that a man who lives only for himself may still shape the fate—and suffering—of others more than anyone else.
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
-                        <div class="question">
-                            <p class="question-text">Why does Dostoevsky introduce the father first instead of the sons?</p>
-                        </div>
-                        <div class="question">
-                            <p class="question-text">Does the almost comic tone make Fyodor Pavlovich more or less disturbing?</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chapter 2 -->
-                <div id="chapter-1-2" class="chapter-content">
-                    <h4 class="chapter-title">Chapter 2: "He Gets Rid of His Eldest Son"</h4>
-                    
-                    <div class="section">
-                        <h5 class="section-title">What Happens</h5>
-                        <p>After Adelaida's death, Fyodor completely abandons three-year-old Dmitri. The boy is taken in by a servant, then passed between relatives who use him as a pawn in disputes over his mother's estate. Dmitri grows up knowing he's owed something but never receiving it—creating a lifelong obsession with money and justice.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Why This Matters</h5>
-                        <p>This chapter establishes Dmitri's fundamental wound: abandonment plus financial betrayal. He's not just angry—he's been taught that the world owes him, yet constantly withholds. This creates his volatile mix of entitlement and rage.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Key Themes</h5>
-                        <div class="key-idea">
-                            <strong>Inheritance as metaphor</strong><br>
-                            Money becomes a symbol of love, recognition, and justice denied
-                        </div>
-                        <div class="key-idea">
-                            <strong>Pattern of abandonment</strong><br>
-                            Dmitri is passed from person to person—no stable attachment
-                        </div>
-                        <div class="key-idea">
-                            <strong>Formation of character through neglect</strong><br>
-                            His impulsiveness isn't just temperament—it's survival strategy
-                        </div>
-                    </div>
-
-                    <div class="takeaway">
-                        <strong>One Sentence Takeaway:</strong><br>
-                        When a child learns early that love and justice are conditional and unreliable, chaos becomes a reasonable response.
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
-                        <div class="question">
-                            <p class="question-text">Is Dmitri's obsession with money about greed—or justice?</p>
-                        </div>
-                        <div class="question">
-                            <p class="question-text">At what point does Dmitri become responsible for his own chaos?</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chapter 3 -->
-                <div id="chapter-1-3" class="chapter-content">
-                    <h4 class="chapter-title">Chapter 3: "The Second Marriage and the Second Family"</h4>
-                    
-                    <div class="section">
-                        <h5 class="section-title">What Happens</h5>
-                        <p>Fyodor marries Sofia Ivanovna, a gentle, religious, and mentally fragile young woman. She bears him two sons—Ivan and Alyosha—before dying, possibly by suicide. Again, Fyodor abandons his children. The boys are raised by a kind benefactor who recognizes Sofia's spiritual nature in them.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Why This Matters</h5>
-                        <p>This chapter introduces the contrast between the brothers' mothers—and thus their inherited natures. While Dmitri comes from passion and chaos, Ivan and Alyosha come from spirituality and suffering. Yet all three are abandoned by the same father.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Key Themes</h5>
-                        <div class="key-idea">
-                            <strong>Maternal influence vs. paternal absence</strong><br>
-                            The mothers shape the sons' souls; the father shapes their wounds
-                        </div>
-                        <div class="key-idea">
-                            <strong>Sofia as Alyosha's spiritual origin</strong><br>
-                            Her gentle faith becomes his inheritance
-                        </div>
-                        <div class="key-idea">
-                            <strong>The role of surrogate parents</strong><br>
-                            Kind strangers save these boys from complete moral ruin
-                        </div>
-                    </div>
-
-                    <div class="takeaway">
-                        <strong>One Sentence Takeaway:</strong><br>
-                        The same father can produce wildly different sons—because mothers matter, and so does who steps in when parents fail.
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
-                        <div class="question">
-                            <p class="question-text">Why are Ivan and Alyosha introduced so differently from Dmitri?</p>
-                        </div>
-                        <div class="question">
-                            <p class="question-text">Is Ivan emotionally absent by nature—or by defense?</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chapter 4 -->
-                <div id="chapter-1-4" class="chapter-content">
-                    <h4 class="chapter-title">Chapter 4: "The Third Son, Alyosha"</h4>
-                    
-                    <div class="section">
-                        <h5 class="section-title">What Happens</h5>
-                        <p>Dostoevsky focuses on Alyosha, describing him as naturally good, loved by everyone, yet not naive. At 19, he becomes a novice at the local monastery under the Elder Zosima. Unlike his brothers, Alyosha chooses faith—not as escape, but as response to suffering.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Why This Matters</h5>
-                        <p>Alyosha is Dostoevsky's moral center. He's not perfect or saintly in a passive way—he actively chooses love, even knowing the world's darkness. This chapter establishes him as the novel's emotional anchor.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Key Themes</h5>
-                        <div class="key-idea">
-                            <strong>Goodness as choice, not innocence</strong><br>
-                            Alyosha sees evil but refuses to become cynical
-                        </div>
-                        <div class="key-idea">
-                            <strong>Faith as active engagement</strong><br>
-                            He doesn't hide in the monastery—he moves toward suffering
-                        </div>
-                        <div class="key-idea">
-                            <strong>The "early lover" archetype</strong><br>
-                            Dostoevsky says Alyosha loved humanity from childhood
-                        </div>
-                    </div>
-
-                    <div class="takeaway">
-                        <strong>One Sentence Takeaway:</strong><br>
-                        Alyosha proves that goodness isn't naivety—it's courage to love despite knowing the cost.
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
-                        <div class="question">
-                            <p class="question-text">Is Alyosha's goodness believable—or too idealized?</p>
-                        </div>
-                        <div class="question">
-                            <p class="question-text">Why does Dostoevsky need a character like Alyosha in this novel?</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chapter 5 -->
-                <div id="chapter-1-5" class="chapter-content">
-                    <h4 class="chapter-title">Chapter 5: "Elders"</h4>
-                    
-                    <div class="section">
-                        <h5 class="section-title">What Happens</h5>
-                        <p>Dostoevsky explains the institution of "Elders" in Russian monasticism. An Elder is a spiritual father who guides monks through confession and obedience. Elder Zosima is such a figure—beloved by some, controversial to others. The practice is debated: does submission free the soul, or enslave it?</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Why This Matters</h5>
-                        <p>This chapter sets up one of the novel's core debates: authority vs. freedom, obedience vs. autonomy, faith vs. reason. Zosima represents spiritual authority that Alyosha trusts—but Ivan will challenge.</p>
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Key Themes</h5>
-                        <div class="key-idea">
-                            <strong>Spiritual authority as contested</strong><br>
-                            Not everyone accepts Zosima's wisdom—some see manipulation
-                        </div>
-                        <div class="key-idea">
-                            <strong>Obedience as paradoxical freedom</strong><br>
-                            Surrendering will to find peace—but is it genuine?
-                        </div>
-                        <div class="key-idea">
-                            <strong>Foreshadowing Zosima's role</strong><br>
-                            He will be tested, and so will Alyosha's faith in him
-                        </div>
-                    </div>
-
-                    <div class="takeaway">
-                        <strong>One Sentence Takeaway:</strong><br>
-                        The novel asks: Can surrendering your will to another person lead to spiritual freedom—or is that just another form of bondage?
-                    </div>
-
-                    <div class="section">
-                        <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
-                        <div class="question">
-                            <p class="question-text">Is the Elder system liberating or dangerous?</p>
-                        </div>
-                        <div class="question">
-                            <p class="question-text">What does this chapter suggest about the novel's view of authority?</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BOOK II -->
-            <div id="book-2" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book II: An Unfortunate Gathering</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>The Karamazov family attempts a formal reconciliation at a monastery, but the meeting collapses into humiliation and hostility. Instead of healing wounds, the gathering exposes pride, resentment, and unresolved power struggles—especially between Fyodor Pavlovich and Dmitri. Elder Zosima's quiet spiritual authority contrasts sharply with the family's chaos. This book demonstrates how truth-seeking fails when participants want validation rather than understanding.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Reconciliation vs validation
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Without humility, even sacred spaces become stages for pride.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Why does the reconciliation attempt fail so completely?</p></div>
-<div class="question"><p class="question-text">Who is seeking truth here—and who is seeking victory?</p></div>
-<div class="question"><p class="question-text">What does Zosima’s presence reveal about the family?</p></div>
-</div>
-
-</div><div id="book-3" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book III: The Sensualists</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>This book plunges into the world of desire, rivalry, and emotional excess. Fyodor Pavlovich and Dmitri become grotesque mirrors of each other as they compete over money and Grushenka. Passion overwhelms restraint, and humiliation fuels cruelty. Dmitri oscillates between generosity and violence, revealing a man torn between conscience and impulse. The book frames sensuality as morally dangerous when untethered from responsibility.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Desire, jealousy, rivalry
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  When desire becomes identity, dignity collapses.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">In what ways do father and son mirror each other?</p></div>
-<div class="question"><p class="question-text">Is Dmitri ruled by emotion or by an internal moral code?</p></div>
-<div class="question"><p class="question-text">How does humiliation accelerate violence and loss of control?</p></div>
-</div>
-
-</div><div id="book-4" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book IV: Lacerations</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>The focus shifts from adult conflict to the suffering of children and the innocent. Through stories of cruelty, bullying, and quiet endurance, Dostoevsky explores how pain imprints itself early in life. Alyosha acts as a witness rather than a savior, absorbing suffering without judgment. This book deepens the novel's moral question: how can faith or goodness survive in a world where the innocent suffer?</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Innocence and cruelty
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Some suffering cannot be explained—only witnessed, borne, and answered with compassion.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Why does Dostoevsky shift focus to children here?</p></div>
-<div class="question"><p class="question-text">What does Alyosha model: fixing, or presence?</p></div>
-<div class="question"><p class="question-text">Is forgiveness possible without justice—why or why not?</p></div>
-</div>
-
-</div><div id="book-5" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book V: Pro and Contra</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>This is the philosophical heart of the novel. Ivan articulates a devastating argument against a world ordered by God if innocent children must suffer. His intellectual rebellion culminates in the parable of The Grand Inquisitor, which questions whether humans truly want freedom or prefer comforting authority. Alyosha responds not with logic but with love and presence. The book stages an unresolved confrontation between reason and faith.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Faith vs reason
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Reason demands justice; love demands response.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Does Ivan’s argument succeed—or does it only indict the world?</p></div>
-<div class="question"><p class="question-text">In the Grand Inquisitor, is freedom a gift or a burden?</p></div>
-<div class="question"><p class="question-text">Is Alyosha’s response insufficient, or operating in a different register?</p></div>
-</div>
-
-</div><div id="book-6" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book VI: The Russian Monk</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>This book offers a lived vision of faith through the teachings and life of Elder Zosima. Rather than abstract theology, Zosima emphasizes humility, love, responsibility for others, and moral action in everyday life. His philosophy insists that everyone is responsible for everyone else. Alyosha's spiritual foundation is clarified here, presenting faith as active engagement with suffering, not escape from it.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Faith lived in action
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Faith is not abstraction—it is responsibility in motion.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Is Zosima’s philosophy realistic, idealized, or both?</p></div>
-<div class="question"><p class="question-text">What does “everyone is responsible for everyone” demand in real life?</p></div>
-<div class="question"><p class="question-text">Why does the novel slow down here?</p></div>
-</div>
-
-</div><div id="book-7" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book VII: Alyosha</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>Alyosha experiences a profound spiritual crisis following Zosima's death, when expectations of holiness collapse into decay and scandal. Tempted toward despair and earthly indulgence, Alyosha ultimately reorients himself toward compassionate action rather than idealized faith. This book portrays doubt not as failure, but as a necessary stage in mature belief.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Spiritual crisis and doubt
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Mature faith is love that persists after ideals collapse.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Why does Zosima’s death shake Alyosha so deeply?</p></div>
-<div class="question"><p class="question-text">Does doubt weaken faith—or make it more honest?</p></div>
-<div class="question"><p class="question-text">What does Alyosha’s renewal suggest about mature belief?</p></div>
-</div>
-
-</div><div id="book-8" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book VIII: Dmitri</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>Dmitri reaches a breaking point as jealousy, debt, and obsession spiral out of control. He struggles intensely with guilt, honor, and the desire to redeem himself even before any crime is proven. His internal battle suggests that moral responsibility begins before legal guilt. This book frames Dmitri as tragic rather than monstrous—a man painfully aware of his own moral collapse.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Guilt and honor
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Conscience can condemn long before the law does.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Can someone be morally guilty without being legally guilty?</p></div>
-<div class="question"><p class="question-text">Where do you see Dmitri’s desire for redemption fighting his impulse?</p></div>
-<div class="question"><p class="question-text">Is Dmitri driven more by fate or choice at this point?</p></div>
-</div>
-
-</div><div id="book-9" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book IX: The Preliminary Investigation</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>The legal machinery begins to turn. Investigators shape a narrative of guilt based as much on Dmitri's character and class as on facts. Testimonies are biased, selective, and performative. Truth becomes secondary to plausibility. Dostoevsky critiques institutional justice, suggesting that courts often seek coherence rather than truth.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Justice vs truth
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Institutions often choose a convincing story over the full truth.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Does the investigation seek truth—or narrative coherence?</p></div>
-<div class="question"><p class="question-text">What evidence feels persuasive, and why?</p></div>
-<div class="question"><p class="question-text">How is Dmitri framed linguistically by authority?</p></div>
-</div>
-
-</div><div id="book-10" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book X: The Boys</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>In a tonal shift, the novel returns to children and community. Alyosha mentors a group of boys navigating loyalty, cruelty, and grief. These scenes provide moral counterweight to the adult world's corruption. The book argues that moral memory, kindness, and shared meaning are how values survive across generations.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Moral formation
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Moral memory is built in small acts, not grand speeches.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Why does Dostoevsky return to children here?</p></div>
-<div class="question"><p class="question-text">Why is kindness framed as heroic in this section?</p></div>
-<div class="question"><p class="question-text">What future is being imagined through these boys?</p></div>
-</div>
-
-</div><div id="book-11" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book XI: Brother Ivan Fyodorovich</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>Ivan's philosophical rebellion turns inward, manifesting as psychological fragmentation. Haunted by guilt and responsibility, he encounters the Devil as a projection of his divided conscience. The book explores how ideas have consequences, even when not acted upon physically. Rationalism without moral grounding begins to collapse under its own weight.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p></p>
-  
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Mental fragmentation
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Ideas do not stay abstract—they return as conscience.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Is the Devil external or internal to Ivan?</p></div>
-<div class="question"><p class="question-text">Can someone be morally responsible for ideas alone?</p></div>
-<div class="question"><p class="question-text">What breaks Ivan—guilt, fear, or the limits of reason?</p></div>
-</div>
-
-</div><div id="book-12" class="book-content">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px;">Book XII: A Judicial Error</h3>
-
-<div class="section">
-  <h5 class="section-title">What Happens</h5>
-  <p>The trial concludes with a verdict that feels emotionally satisfying but morally ambiguous. Legal guilt and moral truth diverge sharply. Speeches persuade more than evidence, and suffering becomes spectacle. The novel refuses a neat resolution, forcing readers to confront whether justice, redemption, or truth has actually been served.</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Why This Book Matters</h5>
-  <p style="margin-bottom: 10px;">The ending resists closure on purpose. Justice, truth, and redemption don't align neatly. A gentle closing question: What kind of ending were you hoping for—and why?</p>
-  <p style="font-style: italic; color: #c19a6b;">Closing reflection: What do you carry forward from this novel into your own life?</p>
-</div>
-
-<div class="section">
-  <h5 class="section-title">Key Themes</h5>
-  <div class="key-idea">Justice vs redemption
-</div>
-
-<div class="takeaway">
-  <strong>One Sentence Takeaway:</strong><br>
-  Persuasion can outrun truth, leaving justice contested and incomplete.
-</div>
-
-<div class="section">
-  <h5 class="section-title">Book-Level Discussion Questions</h5>
-  <div class="question"><p class="question-text">Are the closing arguments about truth—or persuasion?</p></div>
-<div class="question"><p class="question-text">What kind of hope does the epilogue leave?</p></div>
-<div class="question"><p class="question-text">Does the verdict feel morally just even if legally ambiguous?</p></div>
-</div>
-
-</div><!-- BOOK DISCUSSION QUESTIONS TAB -->
-        <div id="book-questions" class="content-section">
-            <h2 class="chapter-title">Discussion Questions by Book</h2>
-            <div class="search-wrap">
-                <input id="questionSearch" class="search-input" type="search" placeholder="Search questions & anchors (e.g., Grand Inquisitor, Zosima, children, freedom…)" />
-                <div class="search-hint">Filters questions and anchors as you type.</div>
-            </div>
-            <p style="margin-bottom: 20px; font-size: 1.1em;">These are designed to spark deep conversation at the end of each Book section.</p>
-
-            <!-- BOOK I -->
-            <div class="section">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book I – The History of a Family</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Is Fyodor Pavlovich morally evil, or morally empty? Why does that distinction matter?</p>
-                    <p class="question-context">Possible discussion: Many readers argue he is morally empty rather than actively evil—he lacks inner life, responsibility, or conscience. Dostoevsky suggests emptiness may be more dangerous than malice because it spreads harm without intention.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. How does neglect function as a form of violence in this family?</p>
-                    <p class="question-context">Possible discussion: Neglect deprives the sons of moral grounding and emotional security. Unlike overt abuse, it leaves no clear villain yet produces lasting damage, shaping resentment, doubt, and instability.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Are the brothers shaped more by character or by upbringing?</p>
-                    <p class="question-context">Possible discussion: The novel presents both forces at work. Upbringing sets the conditions, but each brother exercises agency in how he responds—suggesting responsibility exists within constraint.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">4. What does the novel suggest about what children owe their parents—or don't?</p>
-                    <p class="question-context">Possible discussion: Dostoevsky challenges the idea of automatic filial obligation. Moral authority must be earned through responsibility and love, not biology alone.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">5. Which brother feels most sympathetic at this stage, and why?</p>
-                    <p class="question-context">Possible discussion: Dmitri often evokes sympathy for his suffering, Ivan for his intellectual honesty, and Alyosha for his compassion. Readers' answers often reveal their own moral priorities.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 1: Why introduce the father before the sons? What tone does this set?</div>
-                <div class="key-idea">Ch. 2: Is Dmitri's fixation on money about greed or justice?</div>
-                <div class="key-idea">Ch. 3: How do Ivan and Alyosha represent different responses to the same wound?</div>
-            </div>
-
-            <!-- BOOK II -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book II – An Unfortunate Gathering</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Why does the family meeting fail so completely?</p>
-                    <p class="question-context">Possible discussion: Each participant enters seeking dominance or vindication rather than reconciliation. The setting cannot overcome the absence of humility.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. What role does humiliation play in escalating conflict?</p>
-                    <p class="question-context">Possible discussion: Humiliation becomes a trigger for rage and moral collapse, especially for Dmitri. Pride proves more combustible than anger alone.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Is Zosima's presence calming or destabilizing?</p>
-                    <p class="question-context">Possible discussion: For those open to humility, Zosima offers grounding. For the proud, his moral authority intensifies resentment.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">4. Who seeks truth in this gathering—and who seeks power?</p>
-                    <p class="question-context">Possible discussion: Alyosha and Zosima seek understanding; Fyodor Pavlovich and Dmitri seek victory and validation.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">5. What does this book suggest about forgiveness?</p>
-                    <p class="question-context">Possible discussion: Forgiveness requires humility; without it, formal gestures of reconciliation fail.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 2–3: Why is the setting a monastery, not a home or court?</div>
-                <div class="key-idea">Ch. 5: What does Zosima's bow to Dmitri signify?</div>
-            </div>
-
-            <!-- BOOK III -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book III – The Sensualists</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. In what ways do father and son become mirrors of each other?</p>
-                    <p class="question-context">Possible discussion: Both Fyodor and Dmitri compete for Grushenka, revealing similar patterns of desire, jealousy, and moral recklessness despite their mutual contempt.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. Is Dmitri ruled by emotion or by an internal moral code?</p>
-                    <p class="question-context">Possible discussion: He oscillates between generosity and violence, suggesting emotion drives action—but an underlying sense of honor and guilt suggests conscience is present, even if overwhelmed.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. How does humiliation fuel violence in this book?</p>
-                    <p class="question-context">Possible discussion: Shame becomes unbearable, converting into rage. The chapter shows how public degradation can trigger destructive responses.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 3–5: Is Dmitri ruled by emotion or by an internal moral code?</div>
-                <div class="key-idea">Ch. 8: How does humiliation fuel violence?</div>
-            </div>
-
-            <!-- BOOK IV -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book IV – Lacerations</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Why does Dostoevsky shift focus to children in this book?</p>
-                    <p class="question-context">Possible discussion: Children reveal suffering in its purest form—unearned, undefended. Their pain intensifies the moral questions at the novel's core.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. What do the children reveal that adults conceal?</p>
-                    <p class="question-context">Possible discussion: Children express pain directly, without rationalization or performance. Their vulnerability exposes what adults hide through pride, intellect, or cynicism.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Is forgiveness possible without justice?</p>
-                    <p class="question-context">Possible discussion: The book raises whether reconciliation can occur when wrongs remain unaddressed—whether emotional repair requires acknowledgment or restitution.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 1–3: What do the children reveal that adults conceal?</div>
-                <div class="key-idea">Ch. 7: Is forgiveness possible without justice?</div>
-            </div>
-
-            <!-- BOOK V -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book V – Pro and Contra</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Does Ivan's argument against God succeed?</p>
-                    <p class="question-context">Possible discussion: Ivan's logic is devastating, grounded in compassion for suffering children. Yet the novel doesn't resolve it—suggesting the question may be unanswerable through reason alone.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. Why is the problem of suffering children central to Ivan's argument?</p>
-                    <p class="question-context">Possible discussion: Children's suffering is morally unearned, making theodicy—justifying God's goodness despite evil—especially difficult to defend.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. In The Grand Inquisitor, is freedom a burden humans actually want?</p>
-                    <p class="question-context">Possible discussion: The Inquisitor argues people prefer security, miracle, and authority over moral freedom. The parable asks whether true freedom requires unbearable responsibility.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">4. How does Alyosha respond to Ivan—and is it enough?</p>
-                    <p class="question-context">Possible discussion: Alyosha kisses Ivan rather than arguing. The novel suggests love may respond where logic cannot—but readers differ on whether this satisfies the intellectual challenge.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 3: Why is the problem of suffering children central to Ivan's argument?</div>
-                <div class="key-idea">Ch. 5 (The Grand Inquisitor): Is freedom a burden humans actually want?</div>
-            </div>
-
-            <!-- BOOK VI -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book VI – The Russian Monk</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Is Zosima's philosophy realistic—or idealized?</p>
-                    <p class="question-context">Possible discussion: His teachings emphasize humility, love, and responsibility for all. Some readers find this inspiring; others question whether it's practically achievable.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. Why does Dostoevsky slow the narrative here?</p>
-                    <p class="question-context">Possible discussion: After Ivan's intellectual rebellion, the novel needs a positive moral vision. The pacing invites reflection rather than action.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Is Zosima idealized—or deeply human?</p>
-                    <p class="question-context">Possible discussion: His life includes violence, pride, and struggle—suggesting his wisdom emerges from experience, not innate perfection.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 2: Why does Dostoevsky slow the narrative here?</div>
-                <div class="key-idea">Ch. 3: Is Zosima idealized—or deeply human?</div>
-            </div>
-
-            <!-- BOOK VII -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book VII – Alyosha</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Why does Zosima's death shake Alyosha so deeply?</p>
-                    <p class="question-context">Possible discussion: Alyosha expected divine validation—a miracle. The body's decay shatters his idealized faith, forcing confrontation with doubt.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. What does Alyosha's temptation reveal?</p>
-                    <p class="question-context">Possible discussion: His vulnerability to earthly indulgence shows that goodness isn't automatic—it requires renewed choice, even for the faithful.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Does doubt strengthen or weaken faith in this book?</p>
-                    <p class="question-context">Possible discussion: Alyosha emerges with a more grounded, less idealized faith—suggesting doubt can deepen belief when confronted honestly.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 1: Why does Zosima's death shake Alyosha so deeply?</div>
-                <div class="key-idea">Ch. 4: What does Alyosha's temptation reveal?</div>
-            </div>
-
-            <!-- BOOK VIII -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book VIII – Dmitri</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Is Dmitri driven by fate or choice?</p>
-                    <p class="question-context">Possible discussion: His desperation feels inevitable given his circumstances—yet he still makes decisions, suggesting agency exists within constraint.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. What moment feels like a moral turning point for Dmitri?</p>
-                    <p class="question-context">Possible discussion: Readers differ on whether his crisis represents genuine transformation or temporary emotional intensity.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Can guilt exist before a crime is committed?</p>
-                    <p class="question-context">Possible discussion: Dmitri feels crushing moral responsibility before any legal verdict—raising questions about conscience, intention, and accountability.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 1–3: Is Dmitri driven by fate or choice?</div>
-                <div class="key-idea">Ch. 7: What moment feels like a moral turning point?</div>
-            </div>
-
-            <!-- BOOK IX -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book IX – The Preliminary Investigation</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. How is Dmitri framed linguistically by the investigators?</p>
-                    <p class="question-context">Possible discussion: His passionate speech is reinterpreted as evidence of violence. Language shapes perception as much as facts do.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. What evidence feels persuasive—and why?</p>
-                    <p class="question-context">Possible discussion: The case relies on character judgment and circumstantial narrative more than hard proof—revealing how courts construct truth.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Does the investigation seek truth—or narrative coherence?</p>
-                    <p class="question-context">Possible discussion: Officials seem more interested in a plausible story than actual innocence or guilt.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 2: How is Dmitri framed linguistically?</div>
-                <div class="key-idea">Ch. 5: What evidence feels persuasive—and why?</div>
-            </div>
-
-            <!-- BOOK X -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book X – The Boys</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Why does Dostoevsky return to children at this point in the novel?</p>
-                    <p class="question-context">Possible discussion: After the corruption of the trial, children represent moral possibility—a future shaped by memory, kindness, and community.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. Why is kindness framed as heroic in this section?</p>
-                    <p class="question-context">Possible discussion: In a world of ideology and violence, simple compassion becomes radical—suggesting moral change begins small.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. What future is Dostoevsky imagining through these boys?</p>
-                    <p class="question-context">Possible discussion: The boys' loyalty and memory suggest values can survive across generations through relationship and example.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 5: Why is kindness framed as heroic?</div>
-                <div class="key-idea">Ch. 7: What future is Dostoevsky imagining?</div>
-            </div>
-
-            <!-- BOOK XI -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book XI – Brother Ivan Fyodorovich</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Is the Devil external or internal to Ivan?</p>
-                    <p class="question-context">Possible discussion: The Devil can be read as hallucination—Ivan's fragmented conscience made visible. Either way, ideas become psychologically real.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. What breaks Ivan?</p>
-                    <p class="question-context">Possible discussion: Guilt, responsibility, and the realization that his ideas may have enabled violence—even without direct action.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Can someone be morally responsible for ideas alone?</p>
-                    <p class="question-context">Possible discussion: Ivan didn't commit murder, but his philosophy may have licensed it in another. The novel asks whether intellectual rebellion carries moral weight.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 9: Is the Devil external or internal?</div>
-                <div class="key-idea">Ch. 10: What breaks Ivan?</div>
-            </div>
-
-            <!-- BOOK XII -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">📘 Book XII – A Judicial Error</h3>
-                
-                <h4 class="section-title">End-of-Book Discussion Questions</h4>
-                
-                <div class="question">
-                    <p class="question-text">1. Are the closing arguments about truth—or persuasion?</p>
-                    <p class="question-context">Possible discussion: The speeches appeal to emotion, class, and narrative—not evidence. The trial becomes theater.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">2. What kind of hope does the Epilogue leave us with?</p>
-                    <p class="question-context">Possible discussion: The ending refuses neat closure. Justice and truth diverge, yet relationships and memory persist—suggesting hope lies in human connection, not institutions.</p>
-                </div>
-
-                <div class="question">
-                    <p class="question-text">3. Does the verdict feel morally just—even if legally ambiguous?</p>
-                    <p class="question-context">Possible discussion: Readers often feel conflicted. The outcome may satisfy emotionally but unsettle intellectually—forcing confrontation with competing definitions of justice.</p>
-                </div>
-
-                <h4 class="section-title" style="margin-top: 30px;">Chapter Anchors</h4>
-                <div class="key-idea">Ch. 13: Are the closing arguments about truth—or persuasion?</div>
-                <div class="key-idea">Epilogue: What kind of hope does the novel leave us with?</div>
-            </div>
-
-            <!-- FINAL QUESTION -->
-            <div class="section" style="margin-top: 40px; background: rgba(139, 69, 19, 0.5); border: 3px solid #d4af37;">
-                <h3 style="font-size: 1.8em; color: #d4af37; margin-bottom: 20px; text-align: center;">Final Question for the Entire Novel</h3>
-                <div class="question">
-                    <p class="question-text" style="font-size: 1.3em; text-align: center;">If you had to choose one brother as the novel's moral center—who would it be, and why?</p>
-                </div>
-            </div>
-
-            <!-- FACILITATION TIPS -->
-            <div class="section" style="margin-top: 30px;">
-                <h3 style="font-size: 1.6em; color: #d4af37; margin-bottom: 20px;">💡 Facilitation Tips</h3>
-                
-                <div class="key-idea">
-                    <strong>Open with one moral question, not a plot question</strong><br>
-                    Example: "Is a bad father worse than a bad man?"<br>
-                    This pulls everyone in immediately—even people who struggled with the reading.
-                </div>
-
-                <div class="key-idea">
-                    <strong>Use the 1-2-1 pattern</strong><br>
-                    • Start with one big moral question<br>
-                    • Explore 2-3 specific textual moments<br>
-                    • End with one forward-looking question
-                </div>
-
-                <div class="key-idea">
-                    <strong>When discussion lags, ask:</strong><br>
-                    "Which brother would you want to have coffee with?"<br>
-                    Personal preference questions reignite energy.
-                </div>
-
-                <div class="key-idea">
-                    <strong>Balance philosophical and emotional</strong><br>
-                    Alternate between "What does this mean?" and "How did this make you feel?"
-                </div>
-
-                <div class="key-idea">
-                    <strong>Use "Possible discussion" prompts as gentle guides</strong><br>
-                    These aren't answers to read aloud, but ways to guide conversation if people feel stuck or intimidated.
-                </div>
-            </div>
-        </div>
-
-        <!-- HALLOW COMPANION TAB -->
-        <div id="hallow" class="content-section">
-            <h2 class="chapter-title">The Brothers Karamazov – Optional Spiritual Companion (Hallow App Edition)</h2>
-            
-            <div class="section">
-                <p style="font-size: 1.1em; margin-bottom: 20px;">This companion is entirely optional and designed for readers who use the Hallow app and want a prayerful or contemplative layer alongside Dostoevsky's novel.</p>
-                
-                <ul style="padding-left: 20px; margin-bottom: 20px;">
-                    <li style="margin-bottom: 8px;">This is not required for book club participation</li>
-                    <li style="margin-bottom: 8px;">Nothing here is assumed or discussed unless someone chooses to share</li>
-                    <li style="margin-bottom: 8px;">Use before reading, after reading, or on a separate day</li>
-                    <li style="margin-bottom: 8px;">Silence, reflection, or journaling all count as engagement</li>
-                </ul>
-                
-                <p style="font-style: italic; margin-bottom: 20px;">Think of this as an interior companion, not a discussion guide.</p>
-                
-                <div class="disclaimer">
-                    <strong>Note:</strong> This companion is optional and not affiliated with or endorsed by Hallow.
-                </div>
-                
-                <div class="disclaimer">
-                    <strong>Pray40 Participants:</strong> If you're doing Pray40 during Lent, this companion is best used as a gentle reflection layer (no pressure), or saved for after Easter when you begin the full novel.
-                </div>
-                
-                <a href="https://hallow.com/" target="_blank" rel="noopener noreferrer" class="link-btn">Open Hallow (optional)</a>
-            </div>
-
-            <div class="section">
-                <h5 class="section-title">Quick Start: How to Use This with the Hallow App</h5>
-                
-                <div class="key-idea">
-                    <strong>Step 1: Read</strong><br>
-                    Read the assigned Book or chapters.
-                </div>
-                
-                <div class="key-idea">
-                    <strong>Step 2: Reflect</strong><br>
-                    Read the Quiet Reflection for that Book and sit with it for a minute.
-                </div>
-                
-                <div class="key-idea">
-                    <strong>Step 3: Pray (via Hallow)</strong><br>
-                    Choose a session type that fits your inner state:<br>
-                    • Silent or contemplative prayer when emotions feel heavy<br>
-                    • Guided reflection when thoughts feel scattered<br>
-                    • Examen-style reflection when reviewing the day or relationships<br>
-                    • Short grounding prayer when overwhelmed
-                </div>
-                
-                <div class="key-idea">
-                    <strong>Step 4: Return</strong><br>
-                    Carry the Gentle Intention into your week. Discussion is optional and personal.
-                </div>
-            </div>
-
-            <div class="section">
-                <h5 class="section-title">Suggested Types of Hallow Sessions (No Specific Programs)</h5>
-                
-                <ul style="padding-left: 20px;">
-                    <li style="margin-bottom: 10px;"><strong>Silence / contemplative prayer</strong> — when the material feels emotionally dense</li>
-                    <li style="margin-bottom: 10px;"><strong>Reflection on compassion or mercy</strong> — after books focused on suffering</li>
-                    <li style="margin-bottom: 10px;"><strong>Examen or review-of-day prayer</strong> — when themes of responsibility arise</li>
-                    <li style="margin-bottom: 10px;"><strong>Lament or questioning prayer</strong> — when the novel stirs anger or doubt</li>
-                    <li style="margin-bottom: 10px;"><strong>Gratitude-based prayer</strong> — after moments of hope or kindness</li>
-                </ul>
-                
-                <p style="margin-top: 15px; font-style: italic;">There is no "right" choice. The goal is presence, not performance.</p>
-            </div>
-
-            <div class="section">
-                <h5 class="section-title">Weekly Rhythm (Optional)</h5>
-                
-                <div class="key-idea" style="text-align: center; font-size: 1.2em;">
-                    Read → Reflect → Pray → Discuss
-                </div>
-                
-                <p style="margin-top: 15px; font-style: italic; text-align: center;">This rhythm is flexible. Missing a step does not mean falling behind.</p>
-            </div>
-
-            <div class="section">
-                <h5 class="section-title">Book-by-Book Companion Prompts</h5>
-                
-                <!-- Book I -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book I – The History of a Family</strong><br>
-                    <em>Spiritual theme: Responsibility and origin</em><br><br>
-                    <strong>Quiet reflection:</strong> Where have I been shaped by what was missing rather than what was given?<br><br>
-                    <strong>Gentle intention:</strong> Notice moments this week where compassion is harder because of past wounds.
-                </div>
-
-                <!-- Book II -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book II – An Unfortunate Gathering</strong><br>
-                    <em>Spiritual theme: Humility and listening</em><br><br>
-                    <strong>Quiet reflection:</strong> When I enter difficult conversations, am I seeking understanding or victory?<br><br>
-                    <strong>Gentle intention:</strong> Practice listening without preparing a response.
-                </div>
-
-                <!-- Book III -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book III – The Sensualists</strong><br>
-                    <em>Spiritual theme: Desire and restraint</em><br><br>
-                    <strong>Quiet reflection:</strong> Where does desire lead me toward life—and where does it pull me off center?<br><br>
-                    <strong>Gentle intention:</strong> Pause once this week before acting on strong emotion.
-                </div>
-
-                <!-- Book IV -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book IV – Lacerations</strong><br>
-                    <em>Spiritual theme: Compassion in the face of suffering</em><br><br>
-                    <strong>Quiet reflection:</strong> How do I respond when confronted with pain I cannot fix?<br><br>
-                    <strong>Gentle intention:</strong> Offer presence rather than solutions when someone is hurting.
-                </div>
-
-                <!-- Book V -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book V – Pro and Contra</strong><br>
-                    <em>Spiritual theme: Faith, doubt, and protest</em><br><br>
-                    <strong>Quiet reflection:</strong> What questions do I carry that feel unresolved or painful?<br><br>
-                    <strong>Gentle intention:</strong> Allow questions to exist without forcing answers.
-                </div>
-
-                <!-- Book VI -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book VI – The Russian Monk</strong><br>
-                    <em>Spiritual theme: Lived faith and responsibility</em><br><br>
-                    <strong>Quiet reflection:</strong> What would love in action look like in ordinary moments?<br><br>
-                    <strong>Gentle intention:</strong> Choose one small, unseen act of kindness.
-                </div>
-
-                <!-- Book VII -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book VII – Alyosha</strong><br>
-                    <em>Spiritual theme: Crisis and renewal</em><br><br>
-                    <strong>Quiet reflection:</strong> How do I respond when ideals collapse or disappoint me?<br><br>
-                    <strong>Gentle intention:</strong> Take one step forward even without certainty.
-                </div>
-
-                <!-- Book VIII -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book VIII – Dmitri</strong><br>
-                    <em>Spiritual theme: Guilt, repentance, and longing for redemption</em><br><br>
-                    <strong>Quiet reflection:</strong> Where do I sense the desire to be better than I currently am?<br><br>
-                    <strong>Gentle intention:</strong> Acknowledge one truth about yourself without self-judgment.
-                </div>
-
-                <!-- Book IX -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book IX – The Preliminary Investigation</strong><br>
-                    <em>Spiritual theme: Truth and distortion</em><br><br>
-                    <strong>Quiet reflection:</strong> When have I mistaken a convincing story for the full truth?<br><br>
-                    <strong>Gentle intention:</strong> Hold space for complexity rather than certainty.
-                </div>
-
-                <!-- Book X -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book X – The Boys</strong><br>
-                    <em>Spiritual theme: Moral formation and hope</em><br><br>
-                    <strong>Quiet reflection:</strong> Who shaped my sense of goodness through kindness rather than authority?<br><br>
-                    <strong>Gentle intention:</strong> Encourage someone younger or more vulnerable.
-                </div>
-
-                <!-- Book XI -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book XI – Brother Ivan Fyodorovich</strong><br>
-                    <em>Spiritual theme: Inner conflict and responsibility</em><br><br>
-                    <strong>Quiet reflection:</strong> What ideas or beliefs feel heavy rather than life-giving?<br><br>
-                    <strong>Gentle intention:</strong> Release the need to resolve everything immediately.
-                </div>
-
-                <!-- Book XII -->
-                <div class="key-idea">
-                    <strong style="color: #d4af37;">Book XII – A Judicial Error</strong><br>
-                    <em>Spiritual theme: Justice, mercy, and ambiguity</em><br><br>
-                    <strong>Quiet reflection:</strong> How do I live well when outcomes feel unjust or unresolved?<br><br>
-                    <strong>Gentle intention:</strong> Carry forward compassion rather than judgment.
-                </div>
-            </div>
-
-            <div class="takeaway" style="text-align: center; font-size: 1.2em;">
-                <strong>Closing Reflection:</strong><br><br>
-                What kind of person does this story quietly invite me to become?
-            </div>
-        </div>
+  <div class="container">
+
+    <header>
+      <h1>The Brothers Karamazov</h1>
+      <p class="subtitle">by Fyodor Dostoevsky</p>
+      <p class="subtitle">Your Book Club Companion</p>
+
+      <p style="max-width: 820px; margin: 14px auto 0; color: var(--muted);">
+        <strong style="color: var(--ink);">Ask Betsy — Structured Clarity.</strong>
+        This companion exists to help you cut through complexity in difficult works: identify the central tension,
+        clarify competing worldviews, and enter discussion with calm, grounded clarity. Use it solo or with a group.
+      </p>
+    </header>
+
+    <div class="sticky-nav">
+      <div class="nav-tabs" role="tablist" aria-label="Main sections">
+        <button class="tab-btn active" data-tab="guide" onclick="showTab(event, 'guide')">How to Use This Guide</button>
+        <button class="tab-btn" data-tab="characters" onclick="showTab(event, 'characters')">Characters</button>
+        <button class="tab-btn" data-tab="chapters" onclick="showTab(event, 'chapters')">Chapter-by-Chapter</button>
+        <button class="tab-btn" data-tab="book-questions" onclick="showTab(event, 'book-questions')">Book Discussion Questions</button>
+        <button class="tab-btn" data-tab="hallow" onclick="showTab(event, 'hallow')">Hallow Companion</button>
+      </div>
     </div>
 
-    <script>
-        // State persistence
-        function saveState() {
-            const activeTab = document.querySelector('.tab-btn.active');
-            if (activeTab) {
-                const tabName = activeTab.getAttribute('data-tab');
-                localStorage.setItem('kb_activeTab', tabName);
-            }
-            
-            const activeBook = document.querySelector('.book-btn.active');
-            if (activeBook) {
-                const bookNum = activeBook.getAttribute('data-book');
-                localStorage.setItem('kb_activeBook', bookNum);
-            }
-            
-            const activeChapter = document.querySelector('#book-1 .chapter-btn.active');
-            if (activeChapter) {
-                const chapterNum = activeChapter.getAttribute('data-chapter');
-                localStorage.setItem('kb_activeChapter_B1', chapterNum);
-            }
+    <!-- GUIDE TAB -->
+    <div id="guide" class="content-section active">
+      <h2 class="chapter-title">Welcome to Your Book Club Companion</h2>
+
+      <div class="section">
+        <h5 class="section-title">How to Use This Guide</h5>
+        <p style="margin-bottom: 15px;">This guide is designed for facilitated or self-led book clubs. It balances Dostoevsky's philosophical depth with practical discussion prompts.</p>
+
+        <div class="key-idea">
+          <strong>Use Book-level questions as your primary discussion frame</strong><br>
+          These are found in the "Book Discussion Questions" tab
+        </div>
+
+        <div class="key-idea">
+          <strong>Use Chapter-level questions selectively</strong><br>
+          Pick 1–2 per meeting to anchor the conversation (found in "Chapter-by-Chapter")
+        </div>
+
+        <div class="key-idea">
+          <strong>You do not need to cover every question</strong><br>
+          Choose what resonates with your group's interests and pace
+        </div>
+      </div>
+
+      <div class="section">
+        <h5 class="section-title">Why Book-Level Questions Work Best</h5>
+        <ul style="padding-left: 20px; margin-top: 10px;">
+          <li style="margin-bottom: 10px;">Dostoevsky builds ideas in waves, not neatly per chapter</li>
+          <li style="margin-bottom: 10px;">Chapters often set up tension that doesn't pay off until later</li>
+          <li style="margin-bottom: 10px;">Book-level questions allow people who read differently (fast/slow) to participate meaningfully</li>
+          <li style="margin-bottom: 10px;">Prevents the meeting from becoming a recap session</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h5 class="section-title">Navigation Guide</h5>
+
+        <div class="key-idea">
+          <strong>📚 Characters Tab</strong><br>
+          Meet the Karamazov family before you begin. Understand who's who and what each brother represents.
+        </div>
+
+        <div class="key-idea">
+          <strong>📖 Chapter-by-Chapter Tab</strong><br>
+          Navigate through all 12 Books with:<br>
+          • Book-level summaries<br>
+          • Core themes<br>
+          • Why this matters<br>
+          • Book-level discussion questions<br>
+          • Detailed chapter breakdowns for Book I
+        </div>
+
+        <div class="key-idea">
+          <strong>💬 Book Discussion Questions Tab</strong><br>
+          Complete discussion questions for all 12 Books with:<br>
+          • End-of-book questions<br>
+          • "Possible discussion" prompts to guide conversation<br>
+          • Chapter anchors for deeper exploration<br>
+          • Facilitation tips
+        </div>
+
+        <div class="key-idea">
+          <strong>🙏 Hallow Companion Tab</strong><br>
+          A structured, optional alignment layer: what to read, how to reflect, and how to stay clear.
+        </div>
+      </div>
+
+      <div class="section">
+        <h5 class="section-title">About "Gentle Facilitator Perspectives"</h5>
+        <p style="margin-bottom: 15px;">These notes are written in plain, welcoming language. They are <em>not</em> answers to read aloud, but soft ways to guide conversation if people feel stuck, intimidated, or unsure how to enter the discussion.</p>
+        <p style="font-style: italic; color: var(--muted);">Each book ends with a closing reflection question to carry the conversation beyond the text and into personal experience.</p>
+      </div>
+
+      <div class="takeaway">
+        <strong>Ready to begin?</strong><br>
+        Start with the <strong>Characters</strong> tab to meet the family, then dive into your reading.
+      </div>
+    </div>
+
+    <!-- CHARACTERS TAB -->
+    <div id="characters" class="content-section">
+      <h2 class="chapter-title">The Main Characters</h2>
+
+      <div class="search-wrap">
+        <input id="characterSearch" class="search-input" type="search" placeholder="Search characters (e.g., Ivan, Alyosha, father, faith, reason…)" />
+        <div class="search-hint">Tip: try “faith”, “reason”, “father”.</div>
+      </div>
+
+      <p style="margin-bottom: 20px; font-size: 1.05em; color: var(--muted);">You need to know these people before diving into the chapters:</p>
+
+      <div class="character-grid">
+        <div class="character-card">
+          <h3 class="character-name">Fyodor Pavlovich Karamazov</h3>
+          <p class="character-subtitle">The Father</p>
+          <ul class="character-traits">
+            <li>Crude, selfish, manipulative landowner</li>
+            <li>Obsessed with money, pleasure, and power</li>
+            <li>Emotionally absent as a parent, yet strangely magnetic</li>
+            <li>Represents moral decay, irresponsibility, and ego</li>
+          </ul>
+          <p style="margin-top: 12px; color: var(--muted); font-style: italic;">
+            Dostoevsky makes him unpleasant on purpose. He is the problem the novel circles around.
+          </p>
+        </div>
+
+        <div class="character-card">
+          <h3 class="character-name">Dmitri (Mitya) Karamazov</h3>
+          <p class="character-subtitle">The Eldest Son</p>
+          <ul class="character-traits">
+            <li>Passionate, impulsive, emotionally explosive</li>
+            <li>Lives in extremes: love/hate, generosity/cruelty</li>
+            <li>Fighting with his father over money and a woman</li>
+            <li>Represents the body, desire, honor, raw emotion</li>
+          </ul>
+        </div>
+
+        <div class="character-card">
+          <h3 class="character-name">Ivan Karamazov</h3>
+          <p class="character-subtitle">The Middle Son</p>
+          <ul class="character-traits">
+            <li>Brilliant, intellectual, detached</li>
+            <li>Preoccupied with philosophy, morality, and the problem of evil</li>
+            <li>Cool on the surface; deeply conflicted underneath</li>
+            <li>Represents the mind, reason, skepticism, moral doubt</li>
+          </ul>
+        </div>
+
+        <div class="character-card">
+          <h3 class="character-name">Alyosha (Alexei) Karamazov</h3>
+          <p class="character-subtitle">The Youngest Son</p>
+          <ul class="character-traits">
+            <li>Gentle, compassionate, spiritually inclined</li>
+            <li>A novice monk-in-training</li>
+            <li>Moral and emotional center of the novel</li>
+            <li>Represents the soul, faith, love, humility</li>
+          </ul>
+          <p style="margin-top: 12px; color: var(--muted); font-style: italic;">
+            Alyosha is not naïve—he sees the darkness but chooses love anyway.
+          </p>
+        </div>
+
+        <div class="character-card">
+          <h3 class="character-name">Adelaida Ivanovna</h3>
+          <p class="character-subtitle">The First Wife</p>
+          <ul class="character-traits">
+            <li>Dmitri's mother</li>
+            <li>A passionate, impulsive woman who eloped with Fyodor</li>
+            <li>Died young; her estate becomes a source of dispute</li>
+          </ul>
+        </div>
+
+        <div class="character-card">
+          <h3 class="character-name">Sofia Ivanovna</h3>
+          <p class="character-subtitle">The Second Wife</p>
+          <ul class="character-traits">
+            <li>Ivan and Alyosha's mother</li>
+            <li>Gentle, devout, mentally fragile</li>
+            <li>Also dies young</li>
+            <li>Alyosha inherits her spiritual nature</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAPTERS TAB -->
+    <div id="chapters" class="content-section">
+      <h2 class="chapter-title">Navigate by Book & Chapter</h2>
+
+      <div class="book-selector">
+        <button class="book-btn active" data-book="1" onclick="showBook(event, 1)">Book I</button>
+        <button class="book-btn" data-book="2" onclick="showBook(event, 2)">Book II</button>
+        <button class="book-btn" data-book="3" onclick="showBook(event, 3)">Book III</button>
+        <button class="book-btn" data-book="4" onclick="showBook(event, 4)">Book IV</button>
+        <button class="book-btn" data-book="5" onclick="showBook(event, 5)">Book V</button>
+        <button class="book-btn" data-book="6" onclick="showBook(event, 6)">Book VI</button>
+        <button class="book-btn" data-book="7" onclick="showBook(event, 7)">Book VII</button>
+        <button class="book-btn" data-book="8" onclick="showBook(event, 8)">Book VIII</button>
+        <button class="book-btn" data-book="9" onclick="showBook(event, 9)">Book IX</button>
+        <button class="book-btn" data-book="10" onclick="showBook(event, 10)">Book X</button>
+        <button class="book-btn" data-book="11" onclick="showBook(event, 11)">Book XI</button>
+        <button class="book-btn" data-book="12" onclick="showBook(event, 12)">Book XII</button>
+      </div>
+
+      <!-- BOOK I (detailed chapters) -->
+      <div id="book-1" class="book-content" style="display:block;">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book I: The History of a Family</h3>
+
+        <div class="chapter-nav">
+          <button class="chapter-btn active" data-chapter="1" onclick="showChapter(event, 1, 1)">Chapter 1</button>
+          <button class="chapter-btn" data-chapter="2" onclick="showChapter(event, 1, 2)">Chapter 2</button>
+          <button class="chapter-btn" data-chapter="3" onclick="showChapter(event, 1, 3)">Chapter 3</button>
+          <button class="chapter-btn" data-chapter="4" onclick="showChapter(event, 1, 4)">Chapter 4</button>
+          <button class="chapter-btn" data-chapter="5" onclick="showChapter(event, 1, 5)">Chapter 5</button>
+        </div>
+
+        <div id="chapter-1-1" class="chapter-content" style="display:block;">
+          <h4 class="chapter-title">Chapter 1: "Fyodor Pavlovich Karamazov"</h4>
+
+          <div class="section">
+            <h5 class="section-title">What Happens (Plain English)</h5>
+            <p>Dostoevsky introduces the Karamazov family, starting with the father. We learn:</p>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+              <li>Fyodor Pavlovich is twice married, both marriages disastrous</li>
+              <li>He abandons his children after each wife dies</li>
+              <li>The sons grow up largely without him, raised by others</li>
+              <li>He later reconnects with them—but selfishly and strategically</li>
+            </ul>
+            <p style="margin-top: 12px; font-style: italic; color: var(--muted);">This chapter is not plot-heavy. It's moral groundwork.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Why This Chapter Matters</h5>
+            <p style="margin-bottom: 12px;">This is a character indictment, not just an introduction.</p>
+            <p>Dostoevsky is doing three critical things:</p>
+            <div class="key-idea"><strong>1. Showing how moral neglect creates generational damage</strong></div>
+            <div class="key-idea"><strong>2. Establishing the father as a spiritual vacuum</strong></div>
+            <div class="key-idea"><strong>3. Setting up the central tension:</strong><br>What do children owe a father who never acted like one?</div>
+            <p style="margin-top: 12px;">Everything that happens later—conflict, guilt, rage, even crime—flows from this broken foundation.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Key Ideas for Discussion</h5>
+            <div class="key-idea"><strong>Fatherhood as moral responsibility</strong><br>Fyodor Pavlovich doesn't just fail materially—he fails ethically.</div>
+            <div class="key-idea"><strong>Absence as violence</strong><br>No overt abuse is described, but neglect becomes just as destructive.</div>
+            <div class="key-idea">
+              <strong>The sons as responses to the same wound</strong><br>
+              • Dmitri responds with chaos<br>
+              • Ivan responds with intellect<br>
+              • Alyosha responds with faith<br>
+              <em>Same origin. Radically different outcomes.</em>
+            </div>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Quiet Signals (Dostoevsky Foreshadowing)</h5>
+            <ul style="padding-left: 20px;">
+              <li>The tone is almost mocking—that's intentional</li>
+              <li>The father's irresponsibility is treated as comic, but the consequences will not be</li>
+              <li>We're being warned: this man's moral emptiness will matter later</li>
+            </ul>
+          </div>
+
+          <div class="takeaway">
+            <strong>One Sentence Takeaway:</strong><br>
+            This chapter argues that a man who lives only for himself may still shape the fate—and suffering—of others more than anyone else.
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
+            <div class="question"><p class="question-text">Why does Dostoevsky introduce the father first instead of the sons?</p></div>
+            <div class="question"><p class="question-text">Does the almost comic tone make Fyodor Pavlovich more or less disturbing?</p></div>
+          </div>
+        </div>
+
+        <div id="chapter-1-2" class="chapter-content" style="display:none;">
+          <h4 class="chapter-title">Chapter 2: "He Gets Rid of His Eldest Son"</h4>
+          <div class="section">
+            <h5 class="section-title">What Happens</h5>
+            <p>After Adelaida's death, Fyodor completely abandons three-year-old Dmitri. The boy is taken in by a servant, then passed between relatives who use him as a pawn in disputes over his mother's estate. Dmitri grows up knowing he's owed something but never receiving it—creating a lifelong obsession with money and justice.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Why This Matters</h5>
+            <p>This chapter establishes Dmitri's fundamental wound: abandonment plus financial betrayal. He's not just angry—he's been taught that the world owes him, yet constantly withholds. This creates his volatile mix of entitlement and rage.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Key Themes</h5>
+            <div class="key-idea"><strong>Inheritance as metaphor</strong><br>Money becomes a symbol of love, recognition, and justice denied</div>
+            <div class="key-idea"><strong>Pattern of abandonment</strong><br>Dmitri is passed from person to person—no stable attachment</div>
+            <div class="key-idea"><strong>Formation of character through neglect</strong><br>His impulsiveness isn't just temperament—it's survival strategy</div>
+          </div>
+
+          <div class="takeaway">
+            <strong>One Sentence Takeaway:</strong><br>
+            When a child learns early that love and justice are conditional and unreliable, chaos becomes a reasonable response.
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
+            <div class="question"><p class="question-text">Is Dmitri's obsession with money about greed—or justice?</p></div>
+            <div class="question"><p class="question-text">At what point does Dmitri become responsible for his own chaos?</p></div>
+          </div>
+        </div>
+
+        <div id="chapter-1-3" class="chapter-content" style="display:none;">
+          <h4 class="chapter-title">Chapter 3: "The Second Marriage and the Second Family"</h4>
+
+          <div class="section">
+            <h5 class="section-title">What Happens</h5>
+            <p>Fyodor marries Sofia Ivanovna, a gentle, religious, and mentally fragile young woman. She bears him two sons—Ivan and Alyosha—before dying, possibly by suicide. Again, Fyodor abandons his children. The boys are raised by a kind benefactor who recognizes Sofia's spiritual nature in them.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Why This Matters</h5>
+            <p>This chapter introduces the contrast between the brothers' mothers—and thus their inherited natures. While Dmitri comes from passion and chaos, Ivan and Alyosha come from spirituality and suffering. Yet all three are abandoned by the same father.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Key Themes</h5>
+            <div class="key-idea"><strong>Maternal influence vs. paternal absence</strong><br>The mothers shape the sons' souls; the father shapes their wounds</div>
+            <div class="key-idea"><strong>Sofia as Alyosha's spiritual origin</strong><br>Her gentle faith becomes his inheritance</div>
+            <div class="key-idea"><strong>The role of surrogate parents</strong><br>Kind strangers save these boys from complete moral ruin</div>
+          </div>
+
+          <div class="takeaway">
+            <strong>One Sentence Takeaway:</strong><br>
+            The same father can produce wildly different sons—because mothers matter, and so does who steps in when parents fail.
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
+            <div class="question"><p class="question-text">Why are Ivan and Alyosha introduced so differently from Dmitri?</p></div>
+            <div class="question"><p class="question-text">Is Ivan emotionally absent by nature—or by defense?</p></div>
+          </div>
+        </div>
+
+        <div id="chapter-1-4" class="chapter-content" style="display:none;">
+          <h4 class="chapter-title">Chapter 4: "The Third Son, Alyosha"</h4>
+
+          <div class="section">
+            <h5 class="section-title">What Happens</h5>
+            <p>Dostoevsky focuses on Alyosha, describing him as naturally good, loved by everyone, yet not naive. At 19, he becomes a novice at the local monastery under the Elder Zosima. Unlike his brothers, Alyosha chooses faith—not as escape, but as response to suffering.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Why This Matters</h5>
+            <p>Alyosha is Dostoevsky's moral center. He's not perfect or saintly in a passive way—he actively chooses love, even knowing the world's darkness. This chapter establishes him as the novel's emotional anchor.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Key Themes</h5>
+            <div class="key-idea"><strong>Goodness as choice, not innocence</strong><br>Alyosha sees evil but refuses to become cynical</div>
+            <div class="key-idea"><strong>Faith as active engagement</strong><br>He doesn't hide in the monastery—he moves toward suffering</div>
+            <div class="key-idea"><strong>The "early lover" archetype</strong><br>Dostoevsky says Alyosha loved humanity from childhood</div>
+          </div>
+
+          <div class="takeaway">
+            <strong>One Sentence Takeaway:</strong><br>
+            Alyosha proves that goodness isn't naivety—it's courage to love despite knowing the cost.
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
+            <div class="question"><p class="question-text">Is Alyosha's goodness believable—or too idealized?</p></div>
+            <div class="question"><p class="question-text">Why does Dostoevsky need a character like Alyosha in this novel?</p></div>
+          </div>
+        </div>
+
+        <div id="chapter-1-5" class="chapter-content" style="display:none;">
+          <h4 class="chapter-title">Chapter 5: "Elders"</h4>
+
+          <div class="section">
+            <h5 class="section-title">What Happens</h5>
+            <p>Dostoevsky explains the institution of "Elders" in Russian monasticism. An Elder is a spiritual father who guides monks through confession and obedience. Elder Zosima is such a figure—beloved by some, controversial to others. The practice is debated: does submission free the soul, or enslave it?</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Why This Matters</h5>
+            <p>This chapter sets up one of the novel's core debates: authority vs. freedom, obedience vs. autonomy, faith vs. reason. Zosima represents spiritual authority that Alyosha trusts—but Ivan will challenge.</p>
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Key Themes</h5>
+            <div class="key-idea"><strong>Spiritual authority as contested</strong><br>Not everyone accepts Zosima's wisdom—some see manipulation</div>
+            <div class="key-idea"><strong>Obedience as paradoxical freedom</strong><br>Surrendering will to find peace—but is it genuine?</div>
+            <div class="key-idea"><strong>Foreshadowing Zosima's role</strong><br>He will be tested, and so will Alyosha's faith in him</div>
+          </div>
+
+          <div class="takeaway">
+            <strong>One Sentence Takeaway:</strong><br>
+            The novel asks: Can surrendering your will to another person lead to spiritual freedom—or is that just another form of bondage?
+          </div>
+
+          <div class="section">
+            <h5 class="section-title">Chapter-Specific Discussion Questions</h5>
+            <div class="question"><p class="question-text">Is the Elder system liberating or dangerous?</p></div>
+            <div class="question"><p class="question-text">What does this chapter suggest about the novel's view of authority?</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOOK II -->
+      <div id="book-2" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book II: An Unfortunate Gathering</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>The Karamazov family attempts a formal reconciliation at a monastery, but the meeting collapses into humiliation and hostility. Instead of healing wounds, the gathering exposes pride, resentment, and unresolved power struggles—especially between Fyodor Pavlovich and Dmitri. Elder Zosima's quiet spiritual authority contrasts sharply with the family's chaos.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This is the first time the family’s private dysfunction becomes public and spiritually “measured.” The setting cannot create humility; it only reveals who has it—and who doesn’t.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: When have you seen good intentions fail because humility was missing?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Reconciliation vs validation</div>
+          <div class="key-idea">Pride and humiliation</div>
+          <div class="key-idea">Spiritual authority vs chaos</div>
+          <div class="key-idea">Truth-seeking vs power-seeking</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Without humility, even sacred spaces become stages for pride.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Why does the reconciliation attempt fail so completely?</p></div>
+          <div class="question"><p class="question-text">Who is seeking truth here—and who is seeking victory?</p></div>
+          <div class="question"><p class="question-text">What does Zosima’s presence reveal about the family?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK III -->
+      <div id="book-3" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book III: The Sensualists</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>This book plunges into the world of desire, rivalry, and emotional excess. Fyodor Pavlovich and Dmitri become grotesque mirrors of each other as they compete over money and Grushenka. Passion overwhelms restraint, and humiliation fuels cruelty.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>Desire here is not only sexual—it’s the hunger to be chosen, validated, and powerful. Father and son reveal the same moral weakness in different forms.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: Where do you see desire motivating growth—and where does it tip into harm?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Desire, jealousy, rivalry</div>
+          <div class="key-idea">Shame and erotic power</div>
+          <div class="key-idea">Father-son mirroring</div>
+          <div class="key-idea">Passion vs responsibility</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          When desire becomes identity, dignity collapses.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">In what ways do father and son mirror each other?</p></div>
+          <div class="question"><p class="question-text">Is Dmitri ruled by emotion or by an internal moral code?</p></div>
+          <div class="question"><p class="question-text">How does humiliation accelerate violence and loss of control?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK IV -->
+      <div id="book-4" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book IV: Lacerations</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>The focus shifts from adult conflict to the suffering of children and the innocent. Through stories of cruelty, bullying, and quiet endurance, Dostoevsky explores how pain imprints itself early in life. Alyosha acts as a witness rather than a savior.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This book supplies the moral “evidence” behind Ivan’s coming rebellion. It forces readers to confront suffering without abstraction—and shows Alyosha’s distinctive role: presence instead of control.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: What does this book ask us to do when we cannot fix suffering?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Innocence and cruelty</div>
+          <div class="key-idea">Childhood suffering</div>
+          <div class="key-idea">Faith tested by pain</div>
+          <div class="key-idea">Witnessing vs fixing</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Some suffering cannot be explained—only witnessed, borne, and answered with compassion.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Why does Dostoevsky shift focus to children here?</p></div>
+          <div class="question"><p class="question-text">What does Alyosha model: fixing, or presence?</p></div>
+          <div class="question"><p class="question-text">Is forgiveness possible without justice—why or why not?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK V -->
+      <div id="book-5" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book V: Pro and Contra</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>Ivan articulates a devastating argument against a world ordered by God if innocent children must suffer. His rebellion culminates in The Grand Inquisitor, which questions whether humans truly want freedom or prefer comforting authority. Alyosha responds not with logic but with love and presence.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>Ivan’s ideas now become moral pressure, not abstract philosophy. Alyosha’s response is not an argument—it’s a different way of being human in the face of pain.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: Which question feels more urgent to you right now—fairness or how to live?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Faith vs reason</div>
+          <div class="key-idea">The problem of evil</div>
+          <div class="key-idea">Freedom vs authority</div>
+          <div class="key-idea">Intellectual rebellion</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Reason demands justice; love demands response.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Does Ivan’s argument succeed—or does it only indict the world?</p></div>
+          <div class="question"><p class="question-text">In The Grand Inquisitor, is freedom a gift or a burden?</p></div>
+          <div class="question"><p class="question-text">Is Alyosha’s response insufficient, or operating in a different register?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK VI -->
+      <div id="book-6" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book VI: The Russian Monk</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>Zosima’s teachings and life present a lived vision of faith: humility, love, responsibility, and moral action in everyday life.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This is the moral backbone of the novel: a positive vision of spiritual life that stands beside Ivan’s protest without denying suffering.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: What does “taking responsibility for others” mean in ordinary life?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Faith lived in action</div>
+          <div class="key-idea">Humility and love</div>
+          <div class="key-idea">Universal responsibility</div>
+          <div class="key-idea">Practical spirituality</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Faith is not abstraction—it is responsibility in motion.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Is Zosima’s philosophy realistic, idealized, or both?</p></div>
+          <div class="question"><p class="question-text">What does “everyone is responsible for everyone” demand in real life?</p></div>
+          <div class="question"><p class="question-text">Why does the novel slow down here?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK VII -->
+      <div id="book-7" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book VII: Alyosha</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>Zosima’s death triggers spiritual crisis. Alyosha experiences disillusionment and temptation before recommitting to compassionate action rather than idealized faith.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This book shows that mature faith forms through disappointment—not argument. Renewal comes through action.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: How has disappointment reshaped—not erased—your own beliefs?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Spiritual crisis and doubt</div>
+          <div class="key-idea">Loss and disillusionment</div>
+          <div class="key-idea">Renewal through action</div>
+          <div class="key-idea">Mature faith</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Mature faith is love that persists after ideals collapse.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Why does Zosima’s death shake Alyosha so deeply?</p></div>
+          <div class="question"><p class="question-text">Does doubt weaken faith—or make it more honest?</p></div>
+          <div class="question"><p class="question-text">What does Alyosha’s renewal suggest about mature belief?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK VIII -->
+      <div id="book-8" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book VIII: Dmitri</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>Dmitri’s jealousy, debt, and obsession spiral. He wrestles with guilt, honor, and the desire for redemption even before any legal verdict.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This book shows conscience as a reality deeper than legal judgment. Dmitri’s inner war is responsibility made personal.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: Can someone be morally guilty without being legally guilty?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Guilt and honor</div>
+          <div class="key-idea">Moral vs legal responsibility</div>
+          <div class="key-idea">Chaos and desperation</div>
+          <div class="key-idea">Tragic awareness</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Conscience can condemn long before the law does.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Can someone be morally guilty without being legally guilty?</p></div>
+          <div class="question"><p class="question-text">Where do you see Dmitri’s desire for redemption fighting his impulse?</p></div>
+          <div class="question"><p class="question-text">Is Dmitri driven more by fate or choice here?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK IX -->
+      <div id="book-9" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book IX: The Preliminary Investigation</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>The investigation begins. Testimony and interpretation compete with facts. A narrative of guilt forms through bias, performance, and plausibility.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This book reveals how “truth” can be constructed by institutions that prefer coherence over reality.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: How do you decide what feels true when evidence conflicts?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Justice vs truth</div>
+          <div class="key-idea">Narrative construction</div>
+          <div class="key-idea">Appearance vs reality</div>
+          <div class="key-idea">Institutional bias</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Institutions often choose a convincing story over the full truth.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Does the investigation seek truth—or narrative coherence?</p></div>
+          <div class="question"><p class="question-text">What evidence feels persuasive, and why?</p></div>
+          <div class="question"><p class="question-text">How is Dmitri framed linguistically by authority?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK X -->
+      <div id="book-10" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book X: The Boys</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>A tonal shift: children, loyalty, grief, and moral formation. Alyosha mentors a group of boys navigating kindness and cruelty.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This is moral hope in miniature: goodness formed through relationship and memory instead of ideology.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: What small acts feel most morally meaningful to you?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Moral formation</div>
+          <div class="key-idea">Memory and legacy</div>
+          <div class="key-idea">Community and kindness</div>
+          <div class="key-idea">Generational transmission of values</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Moral memory is built in small acts, not grand speeches.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Why does Dostoevsky return to children here?</p></div>
+          <div class="question"><p class="question-text">Why is kindness framed as heroic?</p></div>
+          <div class="question"><p class="question-text">What future is imagined through these boys?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK XI -->
+      <div id="book-11" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book XI: Brother Ivan Fyodorovich</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>Ivan’s rebellion turns inward. Guilt and fragmentation intensify. The Devil appears as a projection of divided conscience.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This book shows the interior consequences of ideas: conscience becomes psychological reality. Reason alone cannot stabilize the self.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: When have your own ideas felt heavier than expected?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Mental fragmentation</div>
+          <div class="key-idea">Responsibility for ideas</div>
+          <div class="key-idea">The divided self</div>
+          <div class="key-idea">Reason’s limits</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Ideas do not stay abstract—they return as conscience.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Is the Devil external or internal to Ivan?</p></div>
+          <div class="question"><p class="question-text">Can someone be morally responsible for ideas alone?</p></div>
+          <div class="question"><p class="question-text">What breaks Ivan—guilt, fear, or the limits of reason?</p></div>
+        </div>
+      </div>
+
+      <!-- BOOK XII -->
+      <div id="book-12" class="book-content">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">Book XII: A Judicial Error</h3>
+
+        <div class="section">
+          <h5 class="section-title">What Happens</h5>
+          <p>The trial concludes with a verdict that feels emotionally satisfying but morally ambiguous. Legal guilt and moral truth diverge sharply. Speeches persuade more than evidence. The novel refuses neat closure.</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Why This Book Matters</h5>
+          <p>This ending refuses the comfort of a clean resolution. Justice, truth, and redemption do not align neatly—forcing the reader to confront what kind of “justice” we actually believe in.</p>
+          <p style="font-style: italic; color: var(--muted);">Closing reflection: What do you carry forward from this novel into your own life?</p>
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Key Themes</h5>
+          <div class="key-idea">Justice vs redemption</div>
+          <div class="key-idea">Truth vs persuasion</div>
+          <div class="key-idea">Moral ambiguity</div>
+          <div class="key-idea">Suffering as spectacle</div>
+        </div>
+
+        <div class="takeaway">
+          <strong>One Sentence Takeaway:</strong><br>
+          Persuasion can outrun truth, leaving justice contested and incomplete.
+        </div>
+
+        <div class="section">
+          <h5 class="section-title">Book-Level Discussion Questions</h5>
+          <div class="question"><p class="question-text">Are the closing arguments about truth—or persuasion?</p></div>
+          <div class="question"><p class="question-text">What kind of hope does the epilogue leave?</p></div>
+          <div class="question"><p class="question-text">Does the verdict feel morally just even if legally ambiguous?</p></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOOK DISCUSSION QUESTIONS TAB -->
+    <div id="book-questions" class="content-section">
+      <h2 class="chapter-title">Discussion Questions by Book</h2>
+
+      <div class="search-wrap">
+        <input id="questionSearch" class="search-input" type="search" placeholder="Search questions & anchors (e.g., Grand Inquisitor, Zosima, children, freedom…)" />
+        <div class="search-hint">Filters questions and anchors as you type.</div>
+      </div>
+
+      <p style="margin-bottom: 18px; color: var(--muted);">These are designed to spark deep conversation at the end of each Book section.</p>
+
+      <!-- BOOK I -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book I – The History of a Family</h3>
+
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question">
+          <p class="question-text">1. Is Fyodor Pavlovich morally evil, or morally empty? Why does that distinction matter?</p>
+          <p class="question-context">Possible discussion: Many readers argue he is morally empty rather than actively evil—he lacks inner life, responsibility, or conscience. Dostoevsky suggests emptiness may be more dangerous than malice because it spreads harm without intention.</p>
+        </div>
+
+        <div class="question">
+          <p class="question-text">2. How does neglect function as a form of violence in this family?</p>
+          <p class="question-context">Possible discussion: Neglect deprives the sons of moral grounding and emotional security. Unlike overt abuse, it leaves no clear villain yet produces lasting damage, shaping resentment, doubt, and instability.</p>
+        </div>
+
+        <div class="question">
+          <p class="question-text">3. Are the brothers shaped more by character or by upbringing?</p>
+          <p class="question-context">Possible discussion: Upbringing sets the conditions, but each brother exercises agency in how he responds—suggesting responsibility exists within constraint.</p>
+        </div>
+
+        <div class="question">
+          <p class="question-text">4. What does the novel suggest about what children owe their parents—or don't?</p>
+          <p class="question-context">Possible discussion: Moral authority must be earned through responsibility and love, not biology alone.</p>
+        </div>
+
+        <div class="question">
+          <p class="question-text">5. Which brother feels most sympathetic at this stage, and why?</p>
+          <p class="question-context">Possible discussion: Readers’ answers often reveal their own moral priorities.</p>
+        </div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 1: Why introduce the father before the sons? What tone does this set?</div>
+        <div class="key-idea">Ch. 2: Is Dmitri's fixation on money about greed or justice?</div>
+        <div class="key-idea">Ch. 3: How do Ivan and Alyosha represent different responses to the same wound?</div>
+      </div>
+
+      <!-- BOOK II -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book II – An Unfortunate Gathering</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Why does the family meeting fail so completely?</p><p class="question-context">Possible discussion: Each participant enters seeking dominance or vindication rather than reconciliation.</p></div>
+        <div class="question"><p class="question-text">2. What role does humiliation play in escalating conflict?</p><p class="question-context">Possible discussion: Humiliation becomes a trigger for rage and moral collapse, especially for Dmitri.</p></div>
+        <div class="question"><p class="question-text">3. Is Zosima's presence calming or destabilizing?</p><p class="question-context">Possible discussion: For the proud, his moral authority intensifies resentment.</p></div>
+        <div class="question"><p class="question-text">4. Who seeks truth—and who seeks power?</p><p class="question-context">Possible discussion: Alyosha and Zosima seek understanding; Fyodor and Dmitri seek victory.</p></div>
+        <div class="question"><p class="question-text">5. What does this book suggest about forgiveness?</p><p class="question-context">Possible discussion: Forgiveness requires humility; without it, formal gestures fail.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 2–3: Why is the setting a monastery, not a home or court?</div>
+        <div class="key-idea">Ch. 5: What does Zosima's bow to Dmitri signify?</div>
+      </div>
+
+      <!-- BOOK III -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book III – The Sensualists</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. In what ways do father and son become mirrors of each other?</p><p class="question-context">Possible discussion: Both compete for Grushenka, revealing similar moral recklessness.</p></div>
+        <div class="question"><p class="question-text">2. Is Dmitri ruled by emotion or by an internal moral code?</p><p class="question-context">Possible discussion: He swings between generosity and violence; conscience is present but overwhelmed.</p></div>
+        <div class="question"><p class="question-text">3. How does humiliation fuel violence in this book?</p><p class="question-context">Possible discussion: Shame converts into rage; public degradation triggers destructive responses.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 3–5: Is Dmitri ruled by emotion or by an internal moral code?</div>
+        <div class="key-idea">Ch. 8: How does humiliation fuel violence?</div>
+      </div>
+
+      <!-- BOOK IV -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book IV – Lacerations</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Why does Dostoevsky shift focus to children in this book?</p><p class="question-context">Possible discussion: Children reveal suffering in its purest form—unearned and undefended.</p></div>
+        <div class="question"><p class="question-text">2. What do the children reveal that adults conceal?</p><p class="question-context">Possible discussion: Children express pain directly; adults hide through pride, intellect, or cynicism.</p></div>
+        <div class="question"><p class="question-text">3. Is forgiveness possible without justice?</p><p class="question-context">Possible discussion: Can emotional repair occur when wrongs remain unaddressed?</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 1–3: What do the children reveal that adults conceal?</div>
+        <div class="key-idea">Ch. 7: Is forgiveness possible without justice?</div>
+      </div>
+
+      <!-- BOOK V -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book V – Pro and Contra</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Does Ivan's argument against God succeed?</p><p class="question-context">Possible discussion: Devastating logic, grounded in compassion—yet unresolved.</p></div>
+        <div class="question"><p class="question-text">2. Why is the suffering of children central to Ivan's argument?</p><p class="question-context">Possible discussion: Innocent suffering makes theodicy especially difficult to defend.</p></div>
+        <div class="question"><p class="question-text">3. In The Grand Inquisitor, is freedom a burden humans actually want?</p><p class="question-context">Possible discussion: The parable asks whether freedom demands unbearable responsibility.</p></div>
+        <div class="question"><p class="question-text">4. How does Alyosha respond to Ivan—and is it enough?</p><p class="question-context">Possible discussion: Love responds where logic cannot; readers differ on sufficiency.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 3: Why is the problem of suffering children central?</div>
+        <div class="key-idea">Ch. 5: Is freedom a burden humans actually want?</div>
+      </div>
+
+      <!-- BOOK VI -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book VI – The Russian Monk</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Is Zosima's philosophy realistic—or idealized?</p><p class="question-context">Possible discussion: Inspiring simplicity vs practical difficulty.</p></div>
+        <div class="question"><p class="question-text">2. Why does Dostoevsky slow the narrative here?</p><p class="question-context">Possible discussion: The novel needs a positive moral vision after rebellion.</p></div>
+        <div class="question"><p class="question-text">3. Is Zosima idealized—or deeply human?</p><p class="question-context">Possible discussion: His wisdom emerges from struggle, not perfection.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 2: Why slow the narrative?</div>
+        <div class="key-idea">Ch. 3: Idealized—or deeply human?</div>
+      </div>
+
+      <!-- BOOK VII -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book VII – Alyosha</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Why does Zosima's death shake Alyosha so deeply?</p><p class="question-context">Possible discussion: The lack of miracle collapses idealized faith.</p></div>
+        <div class="question"><p class="question-text">2. What does Alyosha's temptation reveal?</p><p class="question-context">Possible discussion: Goodness requires renewed choice.</p></div>
+        <div class="question"><p class="question-text">3. Does doubt strengthen or weaken faith?</p><p class="question-context">Possible discussion: Doubt may deepen belief when confronted honestly.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 1: Why does Zosima’s death shake Alyosha?</div>
+        <div class="key-idea">Ch. 4: What does temptation reveal?</div>
+      </div>
+
+      <!-- BOOK VIII -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book VIII – Dmitri</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Is Dmitri driven by fate or choice?</p><p class="question-context">Possible discussion: Agency exists within constraint.</p></div>
+        <div class="question"><p class="question-text">2. What moment feels like a moral turning point for Dmitri?</p><p class="question-context">Possible discussion: Transformation vs emotional intensity.</p></div>
+        <div class="question"><p class="question-text">3. Can guilt exist before a crime?</p><p class="question-context">Possible discussion: Conscience operates beyond law.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 1–3: Fate or choice?</div>
+        <div class="key-idea">Ch. 7: Moral turning point?</div>
+      </div>
+
+      <!-- BOOK IX -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book IX – The Preliminary Investigation</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. How is Dmitri framed linguistically by investigators?</p><p class="question-context">Possible discussion: Language shapes perception as much as facts.</p></div>
+        <div class="question"><p class="question-text">2. What evidence feels persuasive—and why?</p><p class="question-context">Possible discussion: Character judgment often outweighs proof.</p></div>
+        <div class="question"><p class="question-text">3. Does the investigation seek truth—or coherence?</p><p class="question-context">Possible discussion: Officials may prefer plausibility to accuracy.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 2: Framing through language</div>
+        <div class="key-idea">Ch. 5: Persuasive evidence—why?</div>
+      </div>
+
+      <!-- BOOK X -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book X – The Boys</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Why return to children here?</p><p class="question-context">Possible discussion: Children represent moral possibility.</p></div>
+        <div class="question"><p class="question-text">2. Why is kindness framed as heroic?</p><p class="question-context">Possible discussion: Compassion becomes radical in a corrupt world.</p></div>
+        <div class="question"><p class="question-text">3. What future is imagined through these boys?</p><p class="question-context">Possible discussion: Values survive through memory and example.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 5: Kindness as heroic</div>
+        <div class="key-idea">Ch. 7: What future is imagined?</div>
+      </div>
+
+      <!-- BOOK XI -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book XI – Brother Ivan Fyodorovich</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Is the Devil external or internal to Ivan?</p><p class="question-context">Possible discussion: Hallucination vs metaphysical reality; either way it’s conscience made visible.</p></div>
+        <div class="question"><p class="question-text">2. What breaks Ivan?</p><p class="question-context">Possible discussion: Guilt, responsibility, and the cost of ideas.</p></div>
+        <div class="question"><p class="question-text">3. Can someone be morally responsible for ideas alone?</p><p class="question-context">Possible discussion: What an idea enables matters morally.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 9: Devil external or internal?</div>
+        <div class="key-idea">Ch. 10: What breaks Ivan?</div>
+      </div>
+
+      <!-- BOOK XII -->
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">📘 Book XII – A Judicial Error</h3>
+        <h4 class="section-title">End-of-Book Discussion Questions</h4>
+
+        <div class="question"><p class="question-text">1. Are the closing arguments about truth—or persuasion?</p><p class="question-context">Possible discussion: The trial becomes theater; narrative outruns evidence.</p></div>
+        <div class="question"><p class="question-text">2. What kind of hope does the epilogue leave?</p><p class="question-context">Possible discussion: Hope may rest in relationship and memory, not institutions.</p></div>
+        <div class="question"><p class="question-text">3. Does the verdict feel morally just—even if legally ambiguous?</p><p class="question-context">Possible discussion: Competing definitions of justice collide.</p></div>
+
+        <h4 class="section-title" style="margin-top: 18px;">Chapter Anchors</h4>
+        <div class="key-idea">Ch. 13: Truth or persuasion?</div>
+        <div class="key-idea">Epilogue: What hope remains?</div>
+      </div>
+
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px; text-align:center;">Final Question for the Entire Novel</h3>
+        <div class="question">
+          <p class="question-text" style="text-align:center;">If you had to choose one brother as the novel's moral center—who would it be, and why?</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 style="font-size: 1.25em; color: var(--muted); margin-bottom: 12px;">💡 Facilitation Tips</h3>
+        <div class="key-idea"><strong>Open with one moral question, not a plot question.</strong> Example: “Is a bad father worse than a bad man?”</div>
+        <div class="key-idea"><strong>Use the 1–2–1 pattern.</strong> 1 big question → 2–3 moments → 1 forward-looking reflection.</div>
+        <div class="key-idea"><strong>When discussion lags, ask:</strong> “Which brother would you want to have coffee with?”</div>
+        <div class="key-idea"><strong>Balance philosophical and emotional:</strong> alternate meaning and feeling questions.</div>
+      </div>
+    </div>
+
+    <!-- HALLOW TAB -->
+    <div id="hallow" class="content-section">
+      <h2 class="chapter-title">Optional Spiritual Companion (Hallow-aligned)</h2>
+
+      <div class="section">
+        <p style="margin-bottom:12px;">
+          Hallow offers prayer and reflection. This companion offers structure and clarity. Together, they allow both interior depth and intellectual grounding.
+        </p>
+
+        <div class="disclaimer">
+          <strong>Note:</strong> This companion is optional and not affiliated with or endorsed by Hallow.
+        </div>
+
+        <a href="https://hallow.com/" target="_blank" rel="noopener noreferrer" class="link-btn">Open Hallow (optional)</a>
+      </div>
+
+      <div class="section">
+        <h5 class="section-title">Suggested Reading Roadmap</h5>
+        <p style="margin-bottom: 12px;">
+          If you're following along with Hallow — or reading independently — here is a clean structure to keep you oriented.
+        </p>
+
+        <div class="key-idea"><strong>Week 1:</strong> Books I–II<br><em>Theme:</em> Origin, family wounds, failed reconciliation</div>
+        <div class="key-idea"><strong>Week 2:</strong> Books III–IV<br><em>Theme:</em> Desire, humiliation, suffering of the innocent</div>
+        <div class="key-idea"><strong>Week 3:</strong> Books V–VI<br><em>Theme:</em> Faith vs reason, rebellion, lived spirituality</div>
+        <div class="key-idea"><strong>Week 4:</strong> Books VII–VIII<br><em>Theme:</em> Spiritual crisis, guilt, inner conflict</div>
+        <div class="key-idea"><strong>Week 5:</strong> Books IX–XII<br><em>Theme:</em> Justice, conscience, truth vs persuasion</div>
+
+        <p style="margin-top: 14px; font-style: italic; color: var(--muted);">
+          If Hallow’s pacing differs, simply match the week’s theme to what you are reading.
+        </p>
+      </div>
+
+      <div class="section">
+        <h5 class="section-title">After Each Reading</h5>
+
+        <div class="key-idea"><strong>1. Clarify</strong><br>Write one sentence: “This section is really about ______.”</div>
+        <div class="key-idea"><strong>2. Identify the Tension</strong><br>Is this about justice? pride? freedom? responsibility? love?</div>
+        <div class="key-idea"><strong>3. Sit With It</strong><br>Use Hallow prayer, silence, or examen to reflect.</div>
+        <div class="key-idea"><strong>4. Discuss (Optional)</strong><br>Use the Book Discussion Questions tab to deepen clarity.</div>
+      </div>
+
+      <div class="section">
+        <h5 class="section-title">Book-by-Book Companion Prompts</h5>
+
+        <div class="key-idea"><strong>Book I – The History of a Family</strong><br><em>Theme: Responsibility and origin</em><br><br>
+          <strong>Quiet reflection:</strong> Where have I been shaped by what was missing rather than what was given?<br>
+          <strong>Gentle intention:</strong> Notice moments this week where compassion is harder because of past wounds.
+        </div>
+
+        <div class="key-idea"><strong>Book II – An Unfortunate Gathering</strong><br><em>Theme: Humility and listening</em><br><br>
+          <strong>Quiet reflection:</strong> When I enter difficult conversations, am I seeking understanding or victory?<br>
+          <strong>Gentle intention:</strong> Practice listening without preparing a response.
+        </div>
+
+        <div class="key-idea"><strong>Book III – The Sensualists</strong><br><em>Theme: Desire and restraint</em><br><br>
+          <strong>Quiet reflection:</strong> Where does desire lead me toward life—and where does it pull me off center?<br>
+          <strong>Gentle intention:</strong> Pause once this week before acting on strong emotion.
+        </div>
+
+        <div class="key-idea"><strong>Book IV – Lacerations</strong><br><em>Theme: Compassion in suffering</em><br><br>
+          <strong>Quiet reflection:</strong> How do I respond when confronted with pain I cannot fix?<br>
+          <strong>Gentle intention:</strong> Offer presence rather than solutions when someone is hurting.
+        </div>
+
+        <div class="key-idea"><strong>Book V – Pro and Contra</strong><br><em>Theme: Faith, doubt, protest</em><br><br>
+          <strong>Quiet reflection:</strong> What questions do I carry that feel unresolved or painful?<br>
+          <strong>Gentle intention:</strong> Allow questions to exist without forcing answers.
+        </div>
+
+        <div class="key-idea"><strong>Book VI – The Russian Monk</strong><br><em>Theme: Lived faith</em><br><br>
+          <strong>Quiet reflection:</strong> What would love in action look like in ordinary moments?<br>
+          <strong>Gentle intention:</strong> Choose one small, unseen act of kindness.
+        </div>
+
+        <div class="key-idea"><strong>Book VII – Alyosha</strong><br><em>Theme: Crisis and renewal</em><br><br>
+          <strong>Quiet reflection:</strong> How do I respond when ideals collapse or disappoint me?<br>
+          <strong>Gentle intention:</strong> Take one step forward even without certainty.
+        </div>
+
+        <div class="key-idea"><strong>Book VIII – Dmitri</strong><br><em>Theme: Guilt and redemption</em><br><br>
+          <strong>Quiet reflection:</strong> Where do I sense the desire to be better than I currently am?<br>
+          <strong>Gentle intention:</strong> Acknowledge one truth about yourself without self-judgment.
+        </div>
+
+        <div class="key-idea"><strong>Book IX – The Preliminary Investigation</strong><br><em>Theme: Truth and distortion</em><br><br>
+          <strong>Quiet reflection:</strong> When have I mistaken a convincing story for the full truth?<br>
+          <strong>Gentle intention:</strong> Hold space for complexity rather than certainty.
+        </div>
+
+        <div class="key-idea"><strong>Book X – The Boys</strong><br><em>Theme: Moral formation and hope</em><br><br>
+          <strong>Quiet reflection:</strong> Who shaped my sense of goodness through kindness rather than authority?<br>
+          <strong>Gentle intention:</strong> Encourage someone younger or more vulnerable.
+        </div>
+
+        <div class="key-idea"><strong>Book XI – Brother Ivan Fyodorovich</strong><br><em>Theme: Inner conflict</em><br><br>
+          <strong>Quiet reflection:</strong> What ideas or beliefs feel heavy rather than life-giving?<br>
+          <strong>Gentle intention:</strong> Release the need to resolve everything immediately.
+        </div>
+
+        <div class="key-idea"><strong>Book XII – A Judicial Error</strong><br><em>Theme: Justice and ambiguity</em><br><br>
+          <strong>Quiet reflection:</strong> How do I live well when outcomes feel unjust or unresolved?<br>
+          <strong>Gentle intention:</strong> Carry forward compassion rather than judgment.
+        </div>
+
+        <div class="takeaway" style="text-align:center;">
+          <strong>Closing Reflection:</strong><br>
+          What kind of person does this story quietly invite me to become?
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">© 2026 Ask Betsy — Structured Clarity. All rights reserved.</div>
+
+  </div>
+
+  <script>
+    function saveState() {
+      const activeTab = document.querySelector('.tab-btn.active');
+      if (activeTab) localStorage.setItem('kb_activeTab', activeTab.getAttribute('data-tab'));
+
+      const activeBook = document.querySelector('.book-btn.active');
+      if (activeBook) localStorage.setItem('kb_activeBook', activeBook.getAttribute('data-book'));
+
+      const chaptersSection = document.getElementById('chapters');
+      if (chaptersSection) {
+        const activeBookBtn = chaptersSection.querySelector('.book-btn.active');
+        if (activeBookBtn) {
+          const b = activeBookBtn.getAttribute('data-book');
+          const bookEl = document.getElementById(`book-${b}`);
+          const activeChapterBtn = bookEl ? bookEl.querySelector('.chapter-btn.active') : null;
+          if (activeChapterBtn) localStorage.setItem(`kb_activeChapter_B${b}`, activeChapterBtn.getAttribute('data-chapter'));
         }
+      }
+    }
 
-        function restoreState() {
-            const savedTab = localStorage.getItem('kb_activeTab') || 'guide';
-            const savedBook = localStorage.getItem('kb_activeBook') || '1';
-            const savedChapter = localStorage.getItem('kb_activeChapter_B1') || '1';
-            
-            // Restore tab
-            const tabBtn = document.querySelector(`.tab-btn[data-tab="${savedTab}"]`);
-            if (tabBtn) {
-                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
-                tabBtn.classList.add('active');
-                document.getElementById(savedTab).classList.add('active');
-            }
-            
-            // Restore book if on chapters tab
-            if (savedTab === 'chapters') {
-                const bookBtn = document.querySelector(`.book-btn[data-book="${savedBook}"]`);
-                if (bookBtn) {
-                    document.querySelectorAll('.book-btn').forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.book-content').forEach(content => content.style.display = 'none');
-                    bookBtn.classList.add('active');
-                    document.getElementById(`book-${savedBook}`).style.display = 'block';
-                    
-                    // Restore chapter if Book 1
-                    if (savedBook === '1') {
-                        const chapterBtn = document.querySelector(`#book-1 .chapter-btn[data-chapter="${savedChapter}"]`);
-                        if (chapterBtn) {
-                            document.querySelectorAll('#book-1 .chapter-btn').forEach(btn => btn.classList.remove('active'));
-                            document.querySelectorAll('#book-1 .chapter-content').forEach(content => content.style.display = 'none');
-                            chapterBtn.classList.add('active');
-                            document.getElementById(`chapter-1-${savedChapter}`).style.display = 'block';
-                        }
-                    }
-                }
-            }
+    function restoreState() {
+      const savedTab = localStorage.getItem('kb_activeTab') || 'guide';
+      const savedBook = localStorage.getItem('kb_activeBook') || '1';
+
+      // tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+
+      const tabBtn = document.querySelector(`.tab-btn[data-tab="${savedTab}"]`);
+      const tabSection = document.getElementById(savedTab);
+      if (tabBtn) tabBtn.classList.add('active');
+      if (tabSection) tabSection.classList.add('active');
+
+      // books
+      if (savedTab === 'chapters') {
+        document.querySelectorAll('.book-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.book-content').forEach(content => content.style.display = 'none');
+
+        const bookBtn = document.querySelector(`.book-btn[data-book="${savedBook}"]`);
+        const bookEl = document.getElementById(`book-${savedBook}`);
+
+        if (bookBtn) bookBtn.classList.add('active');
+        if (bookEl) bookEl.style.display = 'block';
+
+        const savedChapter = localStorage.getItem(`kb_activeChapter_B${savedBook}`);
+        if (savedChapter) {
+          const chBtn = document.querySelector(`#book-${savedBook} .chapter-btn[data-chapter="${savedChapter}"]`);
+          if (chBtn) chBtn.click();
         }
+      } else {
+        // ensure default Book I visible for next time
+        const b1 = document.getElementById('book-1');
+        if (b1) b1.style.display = 'block';
+      }
+    }
 
-        // Tab switching
-        function showTab(event, tabName) {
-            // Hide all content sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Remove active class from all tab buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected content section
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked button
-            event.currentTarget.classList.add('active');
-            
-            saveState();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    function showTab(event, tabName) {
+      document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
-        // Book switching
-        function showBook(event, bookNum) {
-            // Hide all book content
-            document.querySelectorAll('.book-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // Remove active class from all book buttons
-            document.querySelectorAll('.book-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected book
-            document.getElementById(`book-${bookNum}`).style.display = 'block';
-            document.getElementById(`book-${bookNum}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
-            
-            // Add active class to clicked button
-            event.currentTarget.classList.add('active');
-            
-            saveState();
-        }
+      const section = document.getElementById(tabName);
+      if (section) section.classList.add('active');
+      event.currentTarget.classList.add('active');
 
-        // Chapter switching
-        function showChapter(event, bookNum, chapterNum) {
-            // Hide all chapters in this book
-            const bookContent = document.getElementById(`book-${bookNum}`);
-            bookContent.querySelectorAll('.chapter-content').forEach(chapter => {
-                chapter.style.display = 'none';
-            });
-            
-            // Remove active class from all chapter buttons
-            bookContent.querySelectorAll('.chapter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected chapter
-            document.getElementById(`chapter-${bookNum}-${chapterNum}`).style.display = 'block';
-            
-            // Add active class to clicked button
-            event.currentTarget.classList.add('active');
-            
-            saveState();
-        }
+      saveState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-        // Search wiring
-        function wireSearch() {
-            const cInput = document.getElementById('characterSearch');
-            const cGrid = document.querySelector('#characters .character-grid');
-            if (cInput && cGrid) {
-                cInput.addEventListener('input', () => {
-                    const q = cInput.value.trim().toLowerCase();
-                    cGrid.querySelectorAll('.character-card').forEach(card => {
-                        const text = card.textContent.toLowerCase();
-                        card.style.display = (!q || text.includes(q)) ? '' : 'none';
-                    });
-                });
-            }
+    function showBook(event, bookNum) {
+      document.querySelectorAll('.book-content').forEach(content => content.style.display = 'none');
+      document.querySelectorAll('.book-btn').forEach(btn => btn.classList.remove('active'));
 
-            const qInput = document.getElementById('questionSearch');
-            const qWrap = document.getElementById('book-questions');
-            if (qInput && qWrap) {
-                qInput.addEventListener('input', () => {
-                    const q = qInput.value.trim().toLowerCase();
-                    qWrap.querySelectorAll('.question, .key-idea').forEach(el => {
-                        const text = el.textContent.toLowerCase();
-                        el.style.display = (!q || text.includes(q)) ? '' : 'none';
-                    });
-                });
-            }
-        }
+      const bookEl = document.getElementById(`book-${bookNum}`);
+      if (bookEl) bookEl.style.display = 'block';
 
-        // Initialize on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            restoreState();
-            wireSearch();
+      event.currentTarget.classList.add('active');
+      saveState();
+
+      if (bookEl) bookEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function showChapter(event, bookNum, chapterNum) {
+      const bookContent = document.getElementById(`book-${bookNum}`);
+      if (!bookContent) return;
+
+      bookContent.querySelectorAll('.chapter-content').forEach(ch => ch.style.display = 'none');
+      bookContent.querySelectorAll('.chapter-btn').forEach(btn => btn.classList.remove('active'));
+
+      const chapterEl = document.getElementById(`chapter-${bookNum}-${chapterNum}`);
+      if (chapterEl) chapterEl.style.display = 'block';
+
+      event.currentTarget.classList.add('active');
+      saveState();
+      if (chapterEl) chapterEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function wireSearch() {
+      const cInput = document.getElementById('characterSearch');
+      const cGrid = document.querySelector('#characters .character-grid');
+      if (cInput && cGrid) {
+        cInput.addEventListener('input', () => {
+          const q = cInput.value.trim().toLowerCase();
+          cGrid.querySelectorAll('.character-card').forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = (!q || text.includes(q)) ? '' : 'none';
+          });
         });
-    </script>
+      }
+
+      const qInput = document.getElementById('questionSearch');
+      const qWrap = document.getElementById('book-questions');
+      if (qInput && qWrap) {
+        qInput.addEventListener('input', () => {
+          const q = qInput.value.trim().toLowerCase();
+          qWrap.querySelectorAll('.question, .key-idea').forEach(el => {
+            const text = el.textContent.toLowerCase();
+            el.style.display = (!q || text.includes(q)) ? '' : 'none';
+          });
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // ensure book-1 is visible if nothing selected
+      const b1 = document.getElementById('book-1');
+      if (b1) b1.style.display = 'block';
+
+      restoreState();
+      wireSearch();
+    });
+  </script>
 </body>
 </html>
